@@ -33,11 +33,34 @@ const experiences = [
   },
 ];
 
+const education = [
+  {
+    title: "Bachelor's of Science",
+    company: "San Francisco State University",
+    dateRange: "2020-Present",
+    description: "received deans list spring 2024",
+  },
+  {
+    title: "CompTIA+ Certification",
+    company: "Self-Study",
+    dateRange: "Jan 2026 - Present",
+    description: "Studied for and passed w",
+  },
+  {
+    title: "av associate",
+    company: "company",
+    dateRange: "company",
+    description: "did the thang",
+  },
+];
+
 export default function ResumePage() {
   return (
     <section className="py-20">
       <div className="max-w-4xl mx-auto px-6">
-        <h1 className="text-4xl font-bold text-secondary mb-12">Resume</h1>
+        <h1 className="text-4xl font-bold text-secondary mb-12">
+          Work Experience
+        </h1>
 
         <div className="relative">
           {/* Timeline connector line */}
@@ -45,6 +68,33 @@ export default function ResumePage() {
 
           <div className="flex flex-col gap-8">
             {experiences.map((exp, index) => (
+              <div key={index} className="relative md:pl-12">
+                {/* Timeline dot */}
+                <div className="absolute left-2.5 top-8 w-3 h-3 rounded-full bg-neutral2 border-2 border-white hidden md:block" />
+
+                <div className="rounded-2xl bg-white shadow-sm p-6 hover:shadow-md transition-shadow">
+                  {/* TODO: Replace with scroll-animated background images using Framer Motion */}
+                  <ImagePlaceholder
+                    aspectRatio="aspect-[3/1]"
+                    label="Background Image"
+                  />
+
+                  <div className="mt-4">
+                    <h3 className="text-xl font-semibold">{exp.title}</h3>
+                    <p className="text-secondary font-medium">{exp.company}</p>
+                    <p className="text-sm text-neutral2 mb-3">
+                      {exp.dateRange}
+                    </p>
+                    <p className="text-neutral1 leading-relaxed">
+                      {exp.description}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="flex flex-col gap-8">
+            {education.map((exp, index) => (
               <div key={index} className="relative md:pl-12">
                 {/* Timeline dot */}
                 <div className="absolute left-2.5 top-8 w-3 h-3 rounded-full bg-neutral2 border-2 border-white hidden md:block" />
