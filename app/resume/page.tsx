@@ -2,18 +2,20 @@ import ImagePlaceholder from "@/components/ImagePlaceholder";
 
 const experiences = [
   {
-    title: "Senior Designer",
-    company: "Creative Studio Co.",
-    dateRange: "2022 — Present",
+    title: "Events Assistant",
+    company: "CuriOdyssey",
+    dateRange: "Fall 2024 — Present",
+    location: "San Mateo, CA",
     description:
       "Led design initiatives for major client projects, collaborated with cross-functional teams, and mentored junior designers. Delivered high-impact visual solutions across digital and print media.",
   },
   {
-    title: "UI/UX Designer",
-    company: "Digital Agency Inc.",
-    dateRange: "2019 — 2022",
+    title: "Overwatch 2 Esports Course Instructor",
+    company: "Gen. G Esports",
+    dateRange: "Jun 2023 - Sept 2023",
+    location: "Riyadh, Saudi Arabia",
     description:
-      "Designed user interfaces and experiences for web and mobile applications. Conducted user research, created wireframes and prototypes, and worked closely with development teams.",
+      "Created 16+ weeks of new advanced course content focused on systematic problem-solving and in-depth game mechanics. Collaborated with international partners and conducted extensive data analysis to integrate diverse strategies and solutions to improve service offerings and drive retention. Curated 70+ pages of reports to supervising agencies about the program's successes including student retention, technology improvements, and the incorporation of online courses into the academy.",
   },
   {
     title: "Junior Graphic Designer",
@@ -21,6 +23,13 @@ const experiences = [
     dateRange: "2017 — 2019",
     description:
       "Created marketing materials, social media assets, and brand collateral. Assisted in building the company's visual identity from the ground up.",
+  },
+  {
+    title: "Freelance Web Developer",
+    company: "Self-Employed",
+    dateRange: "2016 — 2017",
+    description:
+      "Built and maintained websites for small businesses and individuals. Gained experience in client communication, project management, and full-stack development.",
   },
 ];
 
