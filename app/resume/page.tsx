@@ -1,4 +1,5 @@
 import ImagePlaceholder from "@/components/ImagePlaceholder";
+import 
 
 const experiences = [
   {
@@ -18,18 +19,18 @@ const experiences = [
       "Created 16+ weeks of new advanced course content focused on systematic problem-solving and in-depth game mechanics. Collaborated with international partners and conducted extensive data analysis to integrate diverse strategies and solutions to improve service offerings and drive retention. Curated 70+ pages of reports to supervising agencies about the program's successes including student retention, technology improvements, and the incorporation of online courses into the academy.",
   },
   {
-    title: "Junior Graphic Designer",
-    company: "StartUp Labs",
-    dateRange: "2017 — 2019",
+    title: "Dying Light 2 Demo Crew Member",
+    company: "TechLand",
+    dateRange: "Nov. 2021",
     description:
-      "Created marketing materials, social media assets, and brand collateral. Assisted in building the company's visual identity from the ground up.",
+      "Coordinated staffing for demonstration featuring multiple gaming influencers and media outlets totaling over 15 million views, managing concurrent user experiences in a shared environment",
   },
   {
-    title: "Freelance Web Developer",
-    company: "Self-Employed",
-    dateRange: "2016 — 2017",
+    title: "Computer Science Mentor",
+    company: "SFSU",
+    dateRange: "Aug 2021 - Jan 2022",
     description:
-      "Built and maintained websites for small businesses and individuals. Gained experience in client communication, project management, and full-stack development.",
+      "Monitored and guided students through complex programming concepts.",
   },
 ];
 
