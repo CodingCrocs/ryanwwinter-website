@@ -1,4 +1,5 @@
 import ImagePlaceholder from "@/components/ImagePlaceholder";
+import CollapsibleSection from "@/components/CollapsibleSection";
 
 const experiences = [
   {
@@ -58,69 +59,75 @@ export default function ResumePage() {
   return (
     <section className="py-20">
       <div className="max-w-4xl mx-auto px-6">
-        <h1 className="text-4xl font-bold text-secondary mb-12">
-          Work Experience
-        </h1>
+        <CollapsibleSection title="Work Experience" defaultOpen={false}>
+          <div className="relative">
+            <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-neutral2 hidden md:block" />
+            <div className="flex flex-col gap-8">
+              {experiences.map((exp, index) => (
+                <div key={index} className="relative md:pl-12">
+                  {/* Timeline dot */}
+                  <div className="absolute left-2.5 top-8 w-3 h-3 rounded-full bg-neutral2 border-2 border-white hidden md:block" />
 
-        <div className="relative">
-          {/* Timeline connector line */}
-          <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-neutral2 hidden md:block" />
+                  <div className="rounded-2xl bg-white shadow-sm p-6 hover:shadow-md transition-shadow">
+                    {/* TODO: Replace with scroll-animated background images using Framer Motion */}
+                    <ImagePlaceholder
+                      aspectRatio="aspect-[3/1]"
+                      label="Background Image"
+                    />
 
-          <div className="flex flex-col gap-8">
-            {experiences.map((exp, index) => (
-              <div key={index} className="relative md:pl-12">
-                {/* Timeline dot */}
-                <div className="absolute left-2.5 top-8 w-3 h-3 rounded-full bg-neutral2 border-2 border-white hidden md:block" />
-
-                <div className="rounded-2xl bg-white shadow-sm p-6 hover:shadow-md transition-shadow">
-                  {/* TODO: Replace with scroll-animated background images using Framer Motion */}
-                  <ImagePlaceholder
-                    aspectRatio="aspect-[3/1]"
-                    label="Background Image"
-                  />
-
-                  <div className="mt-4">
-                    <h3 className="text-xl font-semibold">{exp.title}</h3>
-                    <p className="text-secondary font-medium">{exp.company}</p>
-                    <p className="text-sm text-neutral2 mb-3">
-                      {exp.dateRange}
-                    </p>
-                    <p className="text-neutral1 leading-relaxed">
-                      {exp.description}
-                    </p>
+                    <div className="mt-4">
+                      <h3 className="text-xl font-semibold">{exp.title}</h3>
+                      <p className="text-secondary font-medium">
+                        {exp.company}
+                      </p>
+                      <p className="text-sm text-neutral2 mb-3">
+                        {exp.dateRange}
+                      </p>
+                      <p className="text-neutral1 leading-relaxed">
+                        {exp.description}
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-          <div className="flex flex-col gap-8">
-            {education.map((exp, index) => (
-              <div key={index} className="relative md:pl-12">
-                {/* Timeline dot */}
-                <div className="absolute left-2.5 top-8 w-3 h-3 rounded-full bg-neutral2 border-2 border-white hidden md:block" />
+        </CollapsibleSection>
 
-                <div className="rounded-2xl bg-white shadow-sm p-6 hover:shadow-md transition-shadow">
-                  {/* TODO: Replace with scroll-animated background images using Framer Motion */}
-                  <ImagePlaceholder
-                    aspectRatio="aspect-[3/1]"
-                    label="Background Image"
-                  />
+        <CollapsibleSection title="Education" defaultOpen={false}>
+          <div className="relative">
+            <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-neutral2 hidden md:block" />
+            <div className="flex flex-col gap-8">
+              {education.map((edu, index) => (
+                <div key={index} className="relative md:pl-12">
+                  {/* Timeline dot */}
+                  <div className="absolute left-2.5 top-8 w-3 h-3 rounded-full bg-neutral2 border-2 border-white hidden md:block" />
 
-                  <div className="mt-4">
-                    <h3 className="text-xl font-semibold">{exp.title}</h3>
-                    <p className="text-secondary font-medium">{exp.company}</p>
-                    <p className="text-sm text-neutral2 mb-3">
-                      {exp.dateRange}
-                    </p>
-                    <p className="text-neutral1 leading-relaxed">
-                      {exp.description}
-                    </p>
+                  <div className="rounded-2xl bg-white shadow-sm p-6 hover:shadow-md transition-shadow">
+                    {/* TODO: Replace with scroll-animated background images using Framer Motion */}
+                    <ImagePlaceholder
+                      aspectRatio="aspect-[3/1]"
+                      label="Background Image"
+                    />
+
+                    <div className="mt-4">
+                      <h3 className="text-xl font-semibold">{edu.title}</h3>
+                      <p className="text-secondary font-medium">
+                        {edu.company}
+                      </p>
+                      <p className="text-sm text-neutral2 mb-3">
+                        {edu.dateRange}
+                      </p>
+                      <p className="text-neutral1 leading-relaxed">
+                        {edu.description}
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
+        </CollapsibleSection>
       </div>
     </section>
   );
