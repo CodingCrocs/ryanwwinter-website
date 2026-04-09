@@ -62,6 +62,8 @@ const media = [
     dateRange: "Nov 2021",
     description:
       "represented local collegiate Esports on nationally distributed radio show",
+    embedUrl:
+      "https://open.spotify.com/embed/episode/2DVPUb88vGPqtfSyIUDShp?utm_source=generator&theme=0&t=0",
   },
 ];
 
@@ -142,28 +144,40 @@ export default function ResumePage() {
           <div className="relative">
             <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-neutral2 hidden md:block" />
             <div className="flex flex-col gap-8">
-              {education.map((edu, index) => (
+              {media.map((item, index) => (
                 <div key={index} className="relative md:pl-12">
                   {/* Timeline dot */}
                   <div className="absolute left-2.5 top-8 w-3 h-3 rounded-full bg-neutral2 border-2 border-white hidden md:block" />
 
                   <div className="rounded-2xl bg-white shadow-sm p-6 hover:shadow-md transition-shadow">
-                    {/* TODO: Replace with scroll-animated background images using Framer Motion */}
-                    <ImagePlaceholder
-                      aspectRatio="aspect-[3/1]"
-                      label="Background Image"
-                    />
+                    {item.embedUrl ? (
+                      <iframe
+                        style={{ borderRadius: "12px" }}
+                        src={item.embedUrl}
+                        width="100%"
+                        height="152"
+                        frameBorder="0"
+                        allowFullScreen
+                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                        loading="lazy"
+                      />
+                    ) : (
+                      <ImagePlaceholder
+                        aspectRatio="aspect-[3/1]"
+                        label="Background Image"
+                      />
+                    )}
 
                     <div className="mt-4">
-                      <h3 className="text-xl font-semibold">{edu.title}</h3>
+                      <h3 className="text-xl font-semibold">{item.title}</h3>
                       <p className="text-secondary font-medium">
-                        {edu.company}
+                        {item.company}
                       </p>
                       <p className="text-sm text-neutral2 mb-3">
-                        {edu.dateRange}
+                        {item.dateRange}
                       </p>
                       <p className="text-neutral1 leading-relaxed">
-                        {edu.description}
+                        {item.description}
                       </p>
                     </div>
                   </div>
