@@ -8,7 +8,11 @@ const navLinks = [
   { href: "/", label: "Home" },
   { href: "/resume", label: "Resume" },
   { href: "/portfolio", label: "Portfolio" },
-  { href: "/photography", label: "Photography" },
+  {
+    href: "https://ryanwinter.myportfolio.com/",
+    label: "Photography",
+    external: true,
+  },
 ];
 
 export default function Navbar() {
@@ -18,25 +22,40 @@ export default function Navbar() {
   return (
     <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-md shadow-sm rounded-b-2xl">
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-        <Link href="/" className="text-xl font-bold text-[#1a1a2e] hover:text-primary transition-colors">
+        <Link
+          href="/"
+          className="text-xl font-bold text-[#1a1a2e] hover:text-primary transition-colors"
+        >
           Ryan Winter
         </Link>
 
         {/* Desktop nav */}
         <div className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className={`transition-colors hover:text-primary ${
-                pathname === link.href
-                  ? "text-primary font-semibold"
-                  : "text-neutral1"
-              }`}
-            >
-              {link.label}
-            </Link>
-          ))}
+          {navLinks.map((link) =>
+            link.external ? (
+              <a
+                key={link.href}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="transition-colors hover:text-primary text-neutral1"
+              >
+                {link.label}
+              </a>
+            ) : (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`transition-colors hover:text-primary ${
+                  pathname === link.href
+                    ? "text-primary font-semibold"
+                    : "text-neutral1"
+                }`}
+              >
+                {link.label}
+              </Link>
+            ),
+          )}
         </div>
 
         {/* Mobile hamburger */}

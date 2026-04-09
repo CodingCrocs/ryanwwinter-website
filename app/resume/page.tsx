@@ -1,5 +1,4 @@
 import ImagePlaceholder from "@/components/ImagePlaceholder";
-import 
 
 const experiences = [
   {

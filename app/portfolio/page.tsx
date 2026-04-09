@@ -2,16 +2,16 @@ import ProjectCard from "@/components/ProjectCard";
 
 const projects = [
   {
-    title: "E-Commerce Dashboard",
+    title: "Ryan Winter Directory",
     description:
-      "A modern dashboard for managing online store inventory, orders, and analytics with real-time data visualization.",
+      "A simple site meant to help show all folks named Ryan Winter across the world.",
     imageAlt: "E-Commerce Dashboard Preview",
     href: "#",
   },
   {
-    title: "Weather App",
+    title: "Natasha Oon Site",
     description:
-      "A clean, responsive weather application that displays current conditions and forecasts using a public API.",
+      "A site meant to coagulate all media appearances and sponsors of an lpga player for increased visibility to new sponsors",
     imageAlt: "Weather App Preview",
     href: "#",
   },
