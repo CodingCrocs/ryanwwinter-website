@@ -59,11 +59,18 @@ const media = [
   {
     title: "KQED's the Forum",
     company: "KQED",
-    dateRange: "Nov 2021",
+    dateRange: "July 2022",
     description:
       "represented local collegiate Esports on nationally distributed radio show",
-    embedUrl:
+    embedSpot:
       "https://open.spotify.com/embed/episode/2DVPUb88vGPqtfSyIUDShp?utm_source=generator&theme=0&t=0",
+  },
+  {
+    title: "Gaming Gators First In-Person Meeting | Fall 2022",
+    company: "Gaming Gators @ SFSU",
+    dateRange: "August 2022",
+    description: "led largest student meeting post pandemic",
+    embedVid: "https://www.youtube.com/embed/9sKEsEAnIHQ?si=iVvXMA859O9OM6Gg",
   },
 ];
 
@@ -150,12 +157,23 @@ export default function ResumePage() {
                   <div className="absolute left-2.5 top-8 w-3 h-3 rounded-full bg-neutral2 border-2 border-white hidden md:block" />
 
                   <div className="rounded-2xl bg-white shadow-sm p-6 hover:shadow-md transition-shadow">
-                    {item.embedUrl ? (
+                    {item.embedSpot ? (
                       <iframe
                         style={{ borderRadius: "12px" }}
-                        src={item.embedUrl}
+                        src={item.embedSpot}
                         width="100%"
                         height="152"
+                        frameBorder="0"
+                        allowFullScreen
+                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                        loading="lazy"
+                      />
+                    ) : item.embedVid ? (
+                      <iframe
+                        style={{ borderRadius: "12px" }}
+                        src={item.embedVid}
+                        width="100%"
+                        height="420"
                         frameBorder="0"
                         allowFullScreen
                         allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
