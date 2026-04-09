@@ -2,10 +2,10 @@ import SocialLink from "@/components/SocialLink";
 import ImagePlaceholder from "@/components/ImagePlaceholder";
 
 const socialLinks = [
-  { label: "Instagram", href: "https://instagram.com" },
-  { label: "Behance", href: "https://behance.net" },
-  { label: "LinkedIn", href: "https://linkedin.com" },
-  { label: "Adobe Portfolio", href: "https://portfolio.adobe.com" },
+  { label: "Instagram", href: "https://www.instagram.com/ryanwinterphotos/" },
+  { label: "GitHub", href: "https://github.com/CodingCrocs" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/ryanwwinter/" },
+  { label: "Adobe Portfolio", href: "https://ryanwinter.myportfolio.com/" },
 ];
 
 export default function Home() {
@@ -17,11 +17,11 @@ export default function Home() {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <h1 className="text-4xl md:text-5xl font-bold mb-4">
-                Hi, I&apos;m Ryan Winter
+                Hi, I&apos;m Ryan!
               </h1>
               <p className="text-lg text-neutral1 mb-8">
-                Creative professional passionate about design, photography, and
-                building great digital experiences.
+                An Experienced Professional with a varied background in Tech,
+                Esports, Events, and Media.
               </p>
               <div className="flex flex-wrap gap-3">
                 {socialLinks.map((link) => (
@@ -44,10 +44,7 @@ export default function Home() {
           <div className="rounded-2xl bg-white shadow-sm p-6 md:p-10">
             <h2 className="text-2xl font-bold mb-4">About Me</h2>
             <p className="text-neutral1 leading-relaxed">
-              Welcome to my personal website! This is a placeholder for the
-              About Me section. Here you can share your story, background,
-              interests, and what drives your creative and professional work.
-              Feel free to replace this text with your own content.
+              Welcome to my personal website!
             </p>
           </div>
         </div>

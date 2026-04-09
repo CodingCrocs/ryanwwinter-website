@@ -1,25 +1,69 @@
+"use client";
+
+import Image from "next/image";
 import ImagePlaceholder from "@/components/ImagePlaceholder";
 import CollapsibleSection from "@/components/CollapsibleSection";
+import { useState } from "react";
 
-const experiences = [
+type ResumeCardItem = {
+  title: string;
+  company: string;
+  dateRange: string;
+  description: string;
+  bullets?: string[];
+  location?: string;
+  image?: string;
+  imagePosition?: string;
+  imageAspect?: string;
+};
+
+const experiences: ResumeCardItem[] = [
   {
     title: "Events Assistant",
     company: "CuriOdyssey",
     dateRange: "Fall 2024 — Present",
     location: "San Mateo, CA",
-    description:
-      "Led design initiatives for major client projects, collaborated with cross-functional teams, and mentored junior designers. Delivered high-impact visual solutions across digital and print media.",
+    description: "",
+    bullets: [
+      "Directly oversaw a high-impact revenue stream within Facility Rentals, achieving a 30.6% YoY growth from 2024 to 2025, outpacing the overall department's 6.7% YoY growth.",
+      "Drove end-to-end delivery of facility rental experiences, from pre-sales discovery and scope definition to cross-functional execution, risk mitigation, and post-event performance analysis.",
+      "Developed an automated generation application for staff using Puppeteer, Node.js, and JavaScript to create a more efficient process for parking pass creation.",
+    ],
   },
   {
     title: "Overwatch 2 Esports Course Instructor",
+    image: "/ryaninriyadh.JPEG",
+    imagePosition: "center 65%",
     company: "Gen. G Esports",
     dateRange: "Jun 2023 - Sept 2023",
     location: "Riyadh, Saudi Arabia",
-    description:
-      "Created 16+ weeks of new advanced course content focused on systematic problem-solving and in-depth game mechanics. Collaborated with international partners and conducted extensive data analysis to integrate diverse strategies and solutions to improve service offerings and drive retention. Curated 70+ pages of reports to supervising agencies about the program's successes including student retention, technology improvements, and the incorporation of online courses into the academy.",
+    description: "",
+    bullets: [
+      "Created 16+ Weeks of new advanced course content focused on systematic problem-solving and in-depth game mechanics.",
+      "Collaborated with international partners and conducted extensive data analysis to integrate diverse strategies and solutions to improve service offerings.",
+      "Curated 70+ pages of reports to supervising agencies about the program's successes including student retention, technology improvements, and the incorporation of online courses into the academy.",
+    ],
+  },
+  {
+    title: "President and Events Manager",
+    company: "Gaming Gators @ SFSU",
+    dateRange: "Apr 2021 - Apr 2023",
+    description: "",
+    bullets: [
+      "Overhauled social media and drove at least 200% growth across Instagram, Twitter, and Discord.",
+      "Expanded Discord from 500 members to more than 2,000 while maintaining roughly 50% active membership.",
+      "Led weekly meetings for a diverse team of 40+ officers across team management, event organization, and content production.",
+      "Hosted monthly hybrid meetings for 300+ attendees.",
+      "Coordinated events from ideation through execution and post-event analysis.",
+      "Created BACED, the Bay Area Collegiate Esports Discord, to connect 10 institutions including SJSU, Cal, and Stanford.",
+      "Built sponsor relationships with companies including Red Bull, NRG, and Haunt.",
+      "Supported inclusivity in gaming by helping establish women-led teams and departments.",
+    ],
   },
   {
     title: "Dying Light 2 Demo Crew Member",
+    image: "/ryandyinglight.JPEG",
+    imagePosition: "center 35%",
     company: "TechLand",
     dateRange: "Nov. 2021",
     description:
@@ -34,7 +78,7 @@ const experiences = [
   },
 ];
 
-const education = [
+const education: ResumeCardItem[] = [
   {
     title: "Bachelor's of Science",
     company: "San Francisco State University",
@@ -55,6 +99,29 @@ const education = [
   },
 ];
 
+function renderCardImage(item: ResumeCardItem) {
+  if (!item.image) {
+    return (
+      <ImagePlaceholder aspectRatio="aspect-[3/1]" label="Background Image" />
+    );
+  }
+
+  return (
+    <div
+      className={`relative overflow-hidden rounded-2xl ${item.imageAspect ?? "aspect-[3/1]"}`}
+    >
+      <Image
+        src={item.image}
+        alt={`${item.title} image`}
+        fill
+        className="object-cover"
+        style={{ objectPosition: item.imagePosition ?? "center" }}
+        sizes="(max-width: 768px) 100vw, 896px"
+      />
+    </div>
+  );
+}
+
 const media = [
   {
     title: "KQED's the Forum",
@@ -74,6 +141,30 @@ const media = [
   },
 ];
 
+function ResumeBulletList({ bullets }: { bullets: string[] }) {
+  const [isExpanded, setIsExpanded] = useState(false);
+  const visibleBullets = isExpanded ? bullets : bullets.slice(0, 3);
+
+  return (
+    <div className="space-y-3">
+      <ul className="list-disc pl-5 space-y-2 text-neutral1">
+        {visibleBullets.map((bullet) => (
+          <li key={bullet}>{bullet}</li>
+        ))}
+      </ul>
+      {bullets.length > 3 ? (
+        <button
+          type="button"
+          onClick={() => setIsExpanded((current) => !current)}
+          className="text-sm font-medium text-secondary transition-opacity hover:opacity-80"
+        >
+          {isExpanded ? "Show less" : "Read more"}
+        </button>
+      ) : null}
+    </div>
+  );
+}
+
 export default function ResumePage() {
   return (
     <section className="py-20">
@@ -88,11 +179,7 @@ export default function ResumePage() {
                   <div className="absolute left-2.5 top-8 w-3 h-3 rounded-full bg-neutral2 border-2 border-white hidden md:block" />
 
                   <div className="rounded-2xl bg-white shadow-sm p-6 hover:shadow-md transition-shadow">
-                    {/* TODO: Replace with scroll-animated background images using Framer Motion */}
-                    <ImagePlaceholder
-                      aspectRatio="aspect-[3/1]"
-                      label="Background Image"
-                    />
+                    {renderCardImage(exp)}
 
                     <div className="mt-4">
                       <h3 className="text-xl font-semibold">{exp.title}</h3>
@@ -102,9 +189,13 @@ export default function ResumePage() {
                       <p className="text-sm text-neutral2 mb-3">
                         {exp.dateRange}
                       </p>
-                      <p className="text-neutral1 leading-relaxed">
-                        {exp.description}
-                      </p>
+                      {exp.bullets?.length ? (
+                        <ResumeBulletList bullets={exp.bullets} />
+                      ) : (
+                        <p className="text-neutral1 leading-relaxed">
+                          {exp.description}
+                        </p>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -123,11 +214,7 @@ export default function ResumePage() {
                   <div className="absolute left-2.5 top-8 w-3 h-3 rounded-full bg-neutral2 border-2 border-white hidden md:block" />
 
                   <div className="rounded-2xl bg-white shadow-sm p-6 hover:shadow-md transition-shadow">
-                    {/* TODO: Replace with scroll-animated background images using Framer Motion */}
-                    <ImagePlaceholder
-                      aspectRatio="aspect-[3/1]"
-                      label="Background Image"
-                    />
+                    {renderCardImage(edu)}
 
                     <div className="mt-4">
                       <h3 className="text-xl font-semibold">{edu.title}</h3>
