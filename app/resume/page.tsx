@@ -124,6 +124,14 @@ function renderCardImage(item: ResumeCardItem) {
 
 const media = [
   {
+    title: "Live Your Legacy Award Recepient Speech",
+    company: "Braven",
+    dateRange: "December 2024",
+    description:
+      "Received the Live Your Legacy Award at Braven's inaugural term closing ceremony, and spoke about my own legacy.",
+    embedVid: "https://www.youtube.com/embed/Q5Pc5WFRGsA?si=LKul7ak5DOrejfU7",
+  },
+  {
     title: "KQED's the Forum",
     company: "KQED",
     dateRange: "July 2022",
