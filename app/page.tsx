@@ -1,5 +1,5 @@
 import SocialLink from "@/components/SocialLink";
-import ImagePlaceholder from "@/components/ImagePlaceholder";
+import HomeSlideshow from "@/components/HomeSlideshow";
 
 const socialLinks = [
   { label: "Instagram", href: "https://www.instagram.com/ryanwinterphotos/" },
@@ -33,7 +33,7 @@ export default function Home() {
                 ))}
               </div>
             </div>
-            <ImagePlaceholder label="Profile Photo" />
+            <HomeSlideshow />
           </div>
         </div>
       </section>
