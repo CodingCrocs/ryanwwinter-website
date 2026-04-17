@@ -8,11 +8,7 @@ const navLinks = [
   { href: "/", label: "Home" },
   { href: "/resume", label: "Resume" },
   { href: "/portfolio", label: "Portfolio" },
-  {
-    href: "https://ryanwinter.myportfolio.com/",
-    label: "Photography",
-    external: true,
-  },
+  { href: "/photography", label: "Photography"},
 ];
 
 export default function Navbar() {
