@@ -17,6 +17,36 @@ type ResumeCardItem = {
   imageAspect?: string;
 };
 
+const majorSkills = [
+  {
+    title: "Event & Production Technology",
+    items:
+      "OBS, NDI workflows, Dante audio networking, hybrid analog/digital AV systems",
+  },
+  {
+    title: "Digital & Web Marketing Tools",
+    items:
+      "Photoshop, Lightroom Classic, Premiere Pro, InDesign, Canva, WordPress",
+  },
+  {
+    title: "Data & Analytics",
+    items: "Python, MySQL, MongoDB, Microsoft Excel, Google Sheets",
+  },
+  {
+    title: "Programming Languages",
+    items:
+    " C++, Java, HTML, CSS, JavaScript, Python, Git"
+  },
+  {title: "AI Programming Tools",
+    items:
+    "Devin, Windsurf, OpenAI Codex, Claude Code, Gemini, ChatGPT, Claude"
+  },
+  {title: "Information Technology",
+    items:
+    "Windows and Mac Troubleshooting, Desktop PC Configuration, Hardware Repairs"
+  }
+];
+
 const experiences: ResumeCardItem[] = [
   {
     title: "Events Assistant",
@@ -153,55 +183,130 @@ export default function ResumePage() {
   return (
     <section className="py-20">
       <div className="max-w-4xl mx-auto px-6">
-        <CollapsibleSection title="Work Experience" defaultOpen={false}>
-          <div className="relative">
-            <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-neutral2 hidden md:block" />
-            <div className="flex flex-col gap-8">
-              {experiences.map((exp, index) => (
-                <div key={index} className="relative md:pl-12">
-                  {/* Timeline dot */}
-                  <div className="absolute left-2.5 top-8 w-3 h-3 rounded-full bg-neutral2 border-2 border-white hidden md:block" />
+        <h1 className="text-4xl font-bold mb-4">Resume</h1>
+        <p className="text-neutral1 text-lg mb-12">
+          Find my work experience, skills, and education here!
+        </p>
 
-                  <div className="rounded-2xl bg-white shadow-sm p-6 hover:shadow-md transition-shadow">
-                    {renderCardImage(exp)}
+        <div className="hidden lg:block mb-12">
+          <div className="mx-auto max-w-4xl rounded-3xl bg-white p-6 shadow-sm">
+            <h2 className="mb-6 flex items-center gap-3 text-4xl font-bold text-secondary">
+              Work Experience
+            </h2>
+            <div className="max-h-[70vh] overflow-y-auto">
+              <div className="mx-auto max-w-3xl rounded-2xl bg-neutral3/40 p-4 md:p-6">
+                <div className="relative">
+                  <div className="absolute left-3.5 top-0 bottom-0 w-0.5 bg-neutral2 hidden md:block" />
+                  <div className="flex flex-col gap-6">
+                    {experiences.map((exp, index) => (
+                      <div key={index} className="relative md:pl-10">
+                        {/* Timeline dot */}
+                        <div className="absolute left-2 top-6 w-3 h-3 rounded-full bg-neutral2 border-2 border-white hidden md:block" />
 
-                    <div className="mt-4">
-                      <h3 className="text-xl font-semibold">{exp.title}</h3>
-                      <p className="text-secondary font-medium">
-                        {exp.company}
-                      </p>
-                      <p className="text-sm text-neutral2 mb-3">
-                        {exp.dateRange}
-                      </p>
-                      {exp.bullets?.length ? (
-                        <ResumeBulletList bullets={exp.bullets} />
-                      ) : (
-                        <p className="text-neutral1 leading-relaxed">
-                          {exp.description}
-                        </p>
-                      )}
-                    </div>
+                        <div className="rounded-2xl bg-white shadow-sm p-5 hover:shadow-md transition-shadow">
+                          {renderCardImage(exp)}
+
+                          <div className="mt-3">
+                            <h3 className="text-lg font-semibold">{exp.title}</h3>
+                            <p className="text-secondary font-medium">
+                              {exp.company}
+                            </p>
+                            <p className="text-sm text-neutral2 mb-3">
+                              {exp.dateRange}
+                            </p>
+                            {exp.bullets?.length ? (
+                              <ResumeBulletList bullets={exp.bullets} />
+                            ) : (
+                              <p className="text-neutral1 leading-relaxed">
+                                {exp.description}
+                              </p>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                    ))}
                   </div>
                 </div>
-              ))}
+              </div>
             </div>
           </div>
-        </CollapsibleSection>
+        </div>
+
+        <div className="lg:hidden">
+          <CollapsibleSection title="Work Experience" defaultOpen={true}>
+            <div className="mx-auto max-w-4xl lg:max-h-[70vh] lg:overflow-y-auto lg:rounded-3xl lg:bg-white lg:p-6 lg:shadow-sm">
+              <div className="mx-auto max-w-3xl rounded-2xl bg-neutral3/40 p-4 md:p-6">
+                <div className="relative">
+                  <div className="absolute left-3.5 top-0 bottom-0 w-0.5 bg-neutral2 hidden md:block" />
+                  <div className="flex flex-col gap-6">
+                    {experiences.map((exp, index) => (
+                      <div key={index} className="relative md:pl-10">
+                        {/* Timeline dot */}
+                        <div className="absolute left-2 top-6 w-3 h-3 rounded-full bg-neutral2 border-2 border-white hidden md:block" />
+
+                        <div className="rounded-2xl bg-white shadow-sm p-5 hover:shadow-md transition-shadow">
+                          {renderCardImage(exp)}
+
+                          <div className="mt-3">
+                            <h3 className="text-lg font-semibold">{exp.title}</h3>
+                            <p className="text-secondary font-medium">
+                              {exp.company}
+                            </p>
+                            <p className="text-sm text-neutral2 mb-3">
+                              {exp.dateRange}
+                            </p>
+                            {exp.bullets?.length ? (
+                              <ResumeBulletList bullets={exp.bullets} />
+                            ) : (
+                              <p className="text-neutral1 leading-relaxed">
+                                {exp.description}
+                              </p>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </CollapsibleSection>
+        </div>
+
+        <div className="mb-12 rounded-3xl bg-white p-6 shadow-sm md:p-8">
+          <h2 className="mb-6 flex items-center gap-3 text-4xl font-bold text-secondary">
+            Major Skills
+          </h2>
+          <div className="grid gap-4 md:grid-cols-2">
+            {majorSkills.map((skill) => (
+              <div
+                key={skill.title}
+                className="rounded-2xl bg-neutral3/60 p-4 shadow-sm"
+              >
+                <h3 className="text-lg font-semibold mb-2">{skill.title}</h3>
+                <p className="text-sm text-neutral1 leading-relaxed">
+                  {skill.items}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
 
         <CollapsibleSection title="Education" defaultOpen={false}>
-          <div className="relative">
-            <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-neutral2 hidden md:block" />
-            <div className="flex flex-col gap-8">
+          <div className="mx-auto max-w-3xl rounded-2xl bg-neutral3/40 p-4 md:p-6">
+            <div className="relative">
+              <div className="absolute left-3.5 top-0 bottom-0 w-0.5 bg-neutral2 hidden md:block" />
+              <div className="flex flex-col gap-6">
               {education.map((edu, index) => (
-                <div key={index} className="relative md:pl-12">
+                <div key={index} className="relative md:pl-10">
                   {/* Timeline dot */}
-                  <div className="absolute left-2.5 top-8 w-3 h-3 rounded-full bg-neutral2 border-2 border-white hidden md:block" />
+                  <div className="absolute left-2 top-6 w-3 h-3 rounded-full bg-neutral2 border-2 border-white hidden md:block" />
 
-                  <div className="rounded-2xl bg-white shadow-sm p-6 hover:shadow-md transition-shadow">
+                  <div className="rounded-2xl bg-white shadow-sm p-5 hover:shadow-md transition-shadow">
                     {renderCardImage(edu)}
 
-                    <div className="mt-4">
-                      <h3 className="text-xl font-semibold">{edu.title}</h3>
+                    <div className="mt-3">
+                      <h3 className="text-lg font-semibold">{edu.title}</h3>
                       <p className="text-secondary font-medium">
                         {edu.company}
                       </p>
@@ -215,6 +320,7 @@ export default function ResumePage() {
                   </div>
                 </div>
               ))}
+              </div>
             </div>
           </div>
         </CollapsibleSection>

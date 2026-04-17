@@ -7,11 +7,11 @@ import ProjectCard from "@/components/ProjectCard";
 
 const projects = [
   {
-    title: "Ryan Winter Directory",
+    title: "This Website!",
     description:
-      "A simple site meant to help show all folks named Ryan Winter across the world.",
-    imageAlt: "E-Commerce Dashboard Preview",
-    href: "#",
+      "A simple site meant to showcase my varied experiences and applications, using Next.JS with React and JSX Libraries.",
+    imageAlt: "Resume Website Preview",
+    href: "https://www.ryanwwinter.com/",
   },
   {
     title: "Natasha Oon Site",
@@ -21,9 +21,9 @@ const projects = [
     href: "#",
   },
   {
-    title: "Task Manager",
+    title: "Ryan Winter Directory",
     description:
-      "A productivity tool for organizing tasks with drag-and-drop, tags, and collaboration features.",
+      "A website for all Ryan Winters to be found across the world!",
     imageAlt: "Task Manager Preview",
     href: "#",
   },
@@ -164,7 +164,7 @@ export default function PortfolioPage() {
       <div className="max-w-6xl mx-auto px-6">
         <h1 className="text-4xl font-bold mb-4">Portfolio</h1>
         <p className="text-neutral1 text-lg mb-12">
-          A selection of projects, event work, and media appearances.
+          A selection of my coding projects, events I've organized, and some of my speeches!
         </p>
 
         <CollapsibleSection title="Software Projects" defaultOpen={false}>
@@ -204,7 +204,7 @@ export default function PortfolioPage() {
           </div>
         </CollapsibleSection>
 
-        <CollapsibleSection title="Media Appearances" defaultOpen={false}>
+        <CollapsibleSection title="Media Appearances & Speaking Engagements" defaultOpen={false}>
           <div className="relative">
             <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-neutral2 hidden md:block" />
             <div className="flex flex-col gap-8">
