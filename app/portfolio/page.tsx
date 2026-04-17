@@ -49,7 +49,7 @@ const events: EventCardItem[] = [
   {
     title: "First Friday: A Train Adventure",
     company: "CuriOdyssey",
-    eventType: "",
+    eventType: "Special Event",
     dateRange: "September 2025",
     description: "",
     imageAlt: "Hybrid community event preview",
@@ -61,16 +61,17 @@ const events: EventCardItem[] = [
     ],
   },
   {
-    title: "Gaming Gators Hybrid Meetings",
-    eventType: "",
+    title: "Gaming Gators First In-Person Meeting",
+    eventType: "Special Event",
     company: "Gaming Gators @ SFSU",
-    dateRange: "2021 - 2023",
+    dateRange: "Fall 2022",
     description: "",
-    imageAlt: "Collegiate esports meetings preview",
+    imageAlt: "Collegiate esports meeting preview",
     bullets: [
-      "Built a collaborative network connecting 10 institutions including SJSU, Cal, and Stanford.",
-      "Created a stronger foundation for cross-campus promotions, shared programming, and larger competitive or community-focused events.",
-      "Aligned student organizations across different schools around communication standards, outreach, and event coordination.",
+      "Planned and Advertised largest attendance club meeting post-pandemic",
+      "Acted as main speaker, engaging audience",
+      "Created engaging presentation content with clear CTAs",
+      "M",
       "Extended the reach of local collegiate esports by making discovery and collaboration easier across the Bay Area.",
     ],
   },
@@ -91,7 +92,7 @@ const events: EventCardItem[] = [
   {
     title: "Dying Light 2 Influencer and Media Preview",
     company: "TechLand",
-    eventType: "",
+    eventType: "Special Event",
     dateRange: "November 2021",
     description:
       "Supported a live demo activation for influencers and media, managing staffing and concurrent attendee experiences for a high-visibility launch moment.",
@@ -219,7 +220,9 @@ export default function PortfolioPage() {
 
                 <div className="mt-4">
                   <h3 className="text-xl font-semibold">{event.title}</h3>
+                  <p className="text-neutral1 font-medium">{event.eventType}</p>
                   <p className="text-secondary font-medium">{event.company}</p>
+                  
                   <p className="text-sm text-neutral2 mb-3">
                     {event.dateRange}
                   </p>

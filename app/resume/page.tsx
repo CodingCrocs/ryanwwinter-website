@@ -80,6 +80,7 @@ const experiences: ResumeCardItem[] = [
   },
   {
     title: "President and Events Manager",
+    image:"/ggsfsu-guildhouse.JPG",
     company: "Gaming Gators @ SFSU",
     dateRange: "Apr 2021 - Apr 2023",
     description: "",
@@ -98,6 +99,15 @@ const experiences: ResumeCardItem[] = [
     title: "Dying Light 2 Demo Crew Member",
     image: "/ryandyinglight.JPEG",
     imagePosition: "center 35%",
+    company: "TechLand",
+    dateRange: "Nov. 2021",
+    description:
+      "Coordinated staffing for demonstration featuring multiple gaming influencers and media outlets totaling over 15 million views, managing concurrent user experiences in a shared environment",
+  },
+  {
+    title: "Overwatch Team Manager, Captain, Head Coach",
+    image: "/GGSFSU-Fresno.JPEG",
+    imagePosition: "center 50%",
     company: "TechLand",
     dateRange: "Nov. 2021",
     description:
