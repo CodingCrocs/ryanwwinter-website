@@ -1,11 +1,31 @@
 "use client";
 
-import ImagePlaceholder from "@/components/ImagePlaceholder";
+import Image from "next/image";
 
-const placeholderPhotos = Array.from({ length: 16 }, (_, index) => ({
-  id: index + 1,
-  title: `Placeholder ${String(index + 1).padStart(2, "0")}`,
-}));
+const photos = [
+  { src: "/photography/baby-cake.jpg", title: "Baby with cake" },
+  { src: "/photography/trap-swing.jpg", title: "Trap swing" },
+  {
+    src: "/photography/basketball-free-throw.jpg",
+    title: "Basketball free throw",
+  },
+  { src: "/photography/ryan-headshot.jpg", title: "Ryan headshot" },
+  { src: "/photography/boy-dark.jpg", title: "Portrait in shadow" },
+  { src: "/photography/teal-ducks.jpg", title: "Teal ducks" },
+  {
+    src: "/photography/grandpa-headshot.JPEG",
+    title: "Grandpa headshot",
+  },
+  { src: "/photography/quail-pedro.jpg", title: "Quail with Pedro" },
+  { src: "/photography/nat-look.jpg", title: "Nat portrait" },
+  { src: "/photography/girl-box.jpg", title: "Girl with box" },
+  { src: "/photography/nmfc-point.jpg", title: "NMFC point" },
+  { src: "/photography/sarah-headshot.jpg", title: "Sarah headshot" },
+  { src: "/photography/basketball-dribble.jpg", title: "Basketball dribble" },
+  { src: "/photography/nmfc-winner.jpg", title: "NMFC winner" },
+  { src: "/photography/yashil-headshot.jpg", title: "Yashil headshot" },
+  { src: "/photography/nat-david.jpg", title: "Nat and David" },
+];
 
 export default function PhotographyPage() {
   return (
@@ -15,16 +35,21 @@ export default function PhotographyPage() {
           <div className="rounded-2xl bg-neutral3 p-4 md:p-5">
             <div className="overflow-hidden">
               <div className="photography-marquee flex w-max gap-3">
-                {[...placeholderPhotos, ...placeholderPhotos].map(
+                {[...photos, ...photos].map(
                   (photo, index) => (
                     <div
-                      key={`${photo.id}-${index}`}
+                      key={`${photo.src}-${index}`}
                       className="w-32 shrink-0 rounded-2xl bg-white/70 p-2 shadow-sm sm:w-36 md:w-40"
                     >
-                      <ImagePlaceholder
-                        aspectRatio="aspect-square"
-                        label={photo.title}
-                      />
+                      <div className="relative aspect-square overflow-hidden rounded-xl bg-neutral2">
+                        <Image
+                          src={photo.src}
+                          alt={photo.title}
+                          fill
+                          sizes="(max-width: 640px) 8rem, (max-width: 768px) 9rem, 10rem"
+                          className="object-cover"
+                        />
+                      </div>
                     </div>
                   ),
                 )}

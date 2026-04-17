@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 import CollapsibleSection from "@/components/CollapsibleSection";
 import ImagePlaceholder from "@/components/ImagePlaceholder";
@@ -42,6 +43,8 @@ type EventCardItem = {
   dateRange: string;
   description: string;
   bullets?: string[];
+  image?: string;
+  imagePosition?: string;
   imageAlt: string;
 };
 
@@ -52,6 +55,7 @@ const events: EventCardItem[] = [
     eventType: "Special Event",
     dateRange: "September 2025",
     description: "",
+    image: "/events/train-night.jpg",
     imageAlt: "Hybrid community event preview",
     bullets: [
       "Brainstormed, planned, and executed the largest scale collaboration in CuriOdyssey's history, combining Transit, Science and Wildlife for an engaging visitor experience.",
@@ -66,6 +70,7 @@ const events: EventCardItem[] = [
     company: "Gaming Gators @ SFSU",
     dateRange: "Fall 2022",
     description: "",
+    image: "/events/ggsfsu-first-meeting.jpg",
     imageAlt: "Collegiate esports meeting preview",
     bullets: [
       "Planned and Advertised largest attendance club meeting post-pandemic",
@@ -81,10 +86,12 @@ const events: EventCardItem[] = [
     eventType: "Recurring",
     dateRange: " September 2024 - Present",
     description: "",
-    imageAlt: "Hybrid community event preview",
+    imageAlt: "Community event preview",
     bullets: [
       "Produced recurring evening events designed to drive attendance, revenue, and guest engagement in a museum setting.",
       "Coordinated programming, staffing, and on-site execution across departments to keep the visitor experience consistent from planning through teardown.",
+      "Bridged technological gaps to increase perceived value of attendance",
+      "Led Asset development through photography for better brand awareness",
       "Balanced entertainment, logistics, and venue operations while adapting quickly to changing attendance patterns and live event needs.",
       "Helped shape a repeatable event format that could support both operational goals and a stronger public-facing brand presence.",
     ],
@@ -94,8 +101,10 @@ const events: EventCardItem[] = [
     company: "TechLand",
     eventType: "Special Event",
     dateRange: "November 2021",
+    image: "/ryandyinglight.JPEG",
+    imagePosition: "center 35%",
     description:
-      "Supported a live demo activation for influencers and media, managing staffing and concurrent attendee experiences for a high-visibility launch moment.",
+      "Coordinated staffing for demonstration featuring multiple gaming influencers and media outlets totaling over 15 million views, managing concurrent user experiences in a shared environment",
     imageAlt: "Live demo event preview",
   },
   {
@@ -211,12 +220,23 @@ export default function PortfolioPage() {
                 key={event.title}
                 className="rounded-2xl bg-white shadow-sm p-6 hover:shadow-md transition-shadow"
               >
-                {/* Replace this placeholder with a curated event image once you have one:
-                    swap in `next/image` and point `src` at a file in `public/`. */}
-                <ImagePlaceholder
-                  aspectRatio="aspect-[3/1]"
-                  label={event.imageAlt}
-                />
+                {event.image ? (
+                  <div className="relative aspect-[3/1] overflow-hidden rounded-2xl bg-neutral2">
+                    <Image
+                      src={event.image}
+                      alt={event.imageAlt}
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
+                      className="object-cover"
+                      style={{ objectPosition: event.imagePosition ?? "center" }}
+                    />
+                  </div>
+                ) : (
+                  <ImagePlaceholder
+                    aspectRatio="aspect-[3/1]"
+                    label={event.imageAlt}
+                  />
+                )}
 
                 <div className="mt-4">
                   <h3 className="text-xl font-semibold">{event.title}</h3>

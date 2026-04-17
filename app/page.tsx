@@ -46,7 +46,12 @@ export default function Home() {
           <div className="rounded-2xl bg-white shadow-sm p-6 md:p-10">
             <h2 className="text-2xl font-bold mb-4">About Me</h2>
             <p className="text-neutral1 leading-relaxed">
-              I've had a diverse background
+              I've had an extremely diverse background of experiences throughout my life that has 
+              turned me into an ultimate jack of all trades. From dressing up as the Christmas Teddy Bear, to DJing Bar Mitzvahs,
+              to learning lagless video streaming protocols to solve a logistics issue, I've always been trusted with various tasks
+              at every organization I've joined. As I move forward in my career I'm looking for opportunities that will help me hone
+              myself as a professional and also utilize my various skills to benefit any team who needs it. I revel in chaos and am always
+              ready for the next challenge that brings itself to me.
             </p>
           </div>
         </div>
