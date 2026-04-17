@@ -7,12 +7,14 @@ import { useState } from "react";
 
 type ResumeCardItem = {
   title: string;
+  subtitle?: string;
   company: string;
   dateRange: string;
   description: string;
   bullets?: string[];
   location?: string;
   image?: string;
+  hideImage?: boolean;
   imagePosition?: string;
   imageAspect?: string;
 };
@@ -52,6 +54,7 @@ const experiences: ResumeCardItem[] = [
   {
     title: "Events Assistant",
     company: "CuriOdyssey",
+    hideImage: true,
     dateRange: "Fall 2024 — Present",
     location: "San Mateo, CA",
     description: "",
@@ -82,6 +85,7 @@ const experiences: ResumeCardItem[] = [
     title: "President and Events Manager",
     image:"/ggsfsu-guildhouse.JPG",
     company: "Gaming Gators @ SFSU",
+    hideImage: false,
     dateRange: "Apr 2021 - Apr 2023",
     description: "",
     bullets: [
@@ -105,17 +109,51 @@ const experiences: ResumeCardItem[] = [
       "Coordinated staffing for demonstration featuring multiple gaming influencers and media outlets totaling over 15 million views, managing concurrent user experiences in a shared environment",
   },
   {
-    title: "Overwatch Team Manager, Captain, Head Coach",
+    title: "Overwatch Manager and Team Captain",
     image: "/GGSFSU-Fresno.JPEG",
     imagePosition: "center 50%",
-    company: "TechLand",
-    dateRange: "Nov. 2021",
-    description:
-      "Coordinated staffing for demonstration featuring multiple gaming influencers and media outlets totaling over 15 million views, managing concurrent user experiences in a shared environment",
+    company: "Gaming Gators @ SFSU",
+    dateRange: "Jan 2021 - July 2023",
+    description: "",
+    bullets: [
+      "Created the team in October 2021 and finished 48th in North America in its first season.",
+      "Organized a same-day team road trip from San Francisco to a LAN in Fresno and back.",
+      "Helped the program earn recognition as the best CSU Overwatch team as of February 12, 2022.",
+      "Placed in the top 30 in both Overwatch 2 seasons while playing multiple roles.",
+    ],
+  },
+  {
+    title: "Semi-Professional Overwatch Esports Athlete",
+    image: "/GGSFSU-Fresno.JPEG",
+    hideImage: true,
+    imagePosition: "center 50%",
+    company: "N/A",
+    dateRange: "2019 - 2023",
+    description: "",
+    bullets: [
+      "Pursued a professional Esports career, playing on amateur teams and professional training squads",
+      "Climbed from below 1500SR to over 4400SR, top 50 in North America",
+      "Played in multiple tryouts for Tier 1 professional teams",
+      "Operated a personal Twitch stream and coaching YouTube channel",
+    ],
+  },
+  {
+    title: "Amateur Overwatch Tutor and Coach",
+    company: "Miscellaneous",
+    dateRange: "2019 - 2021",
+    hideImage: true,
+    description: "",
+    bullets: [
+      "Coached Bronze to Platinum level pickup games, offering individual critique to 12+ players across every role.",
+      "Joined a struggling amateur tournament team, transitioned from last place to 3rd in one season",
+      "Created improvement plans for players after reviewing short gameplay samples.",
+      "Helped many repeat students climb consistently from Silver to Diamond.",
+    ],
   },
   {
     title: "Computer Science Mentor",
     company: "SFSU",
+    hideImage: true,
     dateRange: "Aug 2021 - Jan 2022",
     description:
       "Monitored and guided students through complex programming concepts.",
@@ -125,6 +163,7 @@ const experiences: ResumeCardItem[] = [
 const education: ResumeCardItem[] = [
   {
     title: "Bachelor's of Science",
+    subtitle: "Minor in Business Administration",
     company: "San Francisco State University",
     dateRange: "2020-Present",
     description: "received deans list spring 2024",
@@ -136,14 +175,18 @@ const education: ResumeCardItem[] = [
     description: "Studied for and passed w",
   },
   {
-    title: "av associate",
-    company: "company",
-    dateRange: "company",
-    description: "did the thang",
+    title: "AV Associate",
+    company: "Extron",
+    dateRange: "March 2025",
+    description: "Learned the basics of Audio/Visual Technology, including cables, waveforms, and AV over IP",
   },
 ];
 
 function renderCardImage(item: ResumeCardItem) {
+  if (item.hideImage) {
+    return null;
+  }
+
   if (!item.image) {
     return (
       <ImagePlaceholder aspectRatio="aspect-[3/1]" label="Background Image" />
@@ -218,15 +261,18 @@ export default function ResumePage() {
                           {renderCardImage(exp)}
 
                           <div className="mt-3">
-                            <h3 className="text-lg font-semibold">
-                              {exp.title}
-                            </h3>
+                            <div className="flex items-start justify-between gap-4">
+                              <h3 className="text-lg font-semibold">
+                                {exp.title}
+                              </h3>
+                              <p className="shrink-0 text-sm text-neutral2">
+                                {exp.dateRange}
+                              </p>
+                            </div>
                             <p className="text-secondary font-medium">
                               {exp.company}
                             </p>
-                            <p className="text-sm text-neutral2 mb-3">
-                              {exp.dateRange}
-                            </p>
+                            <div className="mb-3" />
                             {exp.bullets?.length ? (
                               <ResumeBulletList bullets={exp.bullets} />
                             ) : (
@@ -261,15 +307,18 @@ export default function ResumePage() {
                           {renderCardImage(exp)}
 
                           <div className="mt-3">
-                            <h3 className="text-lg font-semibold">
-                              {exp.title}
-                            </h3>
+                            <div className="flex items-start justify-between gap-4">
+                              <h3 className="text-lg font-semibold">
+                                {exp.title}
+                              </h3>
+                              <p className="shrink-0 text-sm text-neutral2">
+                                {exp.dateRange}
+                              </p>
+                            </div>
                             <p className="text-secondary font-medium">
                               {exp.company}
                             </p>
-                            <p className="text-sm text-neutral2 mb-3">
-                              {exp.dateRange}
-                            </p>
+                            <div className="mb-3" />
                             {exp.bullets?.length ? (
                               <ResumeBulletList bullets={exp.bullets} />
                             ) : (
@@ -318,16 +367,22 @@ export default function ResumePage() {
                     <div className="absolute left-2 top-6 w-3 h-3 rounded-full bg-neutral2 border-2 border-white hidden md:block" />
 
                     <div className="rounded-2xl bg-white shadow-sm p-5 hover:shadow-md transition-shadow">
-                      {renderCardImage(edu)}
-
-                      <div className="mt-3">
-                        <h3 className="text-lg font-semibold">{edu.title}</h3>
+                      <div>
+                        <div className="flex items-start justify-between gap-4">
+                          <h3 className="text-lg font-semibold">{edu.title}</h3>
+                          <p className="shrink-0 text-sm text-neutral2">
+                            {edu.dateRange}
+                          </p>
+                        </div>
+                        {edu.subtitle ? (
+                          <h4 className="text-base font-semibold text-neutral1">
+                            {edu.subtitle}
+                          </h4>
+                        ) : null}
                         <p className="text-secondary font-medium">
                           {edu.company}
                         </p>
-                        <p className="text-sm text-neutral2 mb-3">
-                          {edu.dateRange}
-                        </p>
+                        <div className="mb-3" />
                         <p className="text-neutral1 leading-relaxed">
                           {edu.description}
                         </p>
