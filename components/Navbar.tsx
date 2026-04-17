@@ -32,17 +32,8 @@ export default function Navbar() {
         {/* Desktop nav */}
         <div className="hidden md:flex items-center gap-8">
           {navLinks.map((link) =>
-            link.external ? (
-              <a
-                key={link.href}
-                href={link.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="transition-colors hover:text-primary text-neutral1"
-              >
-                {link.label}
-              </a>
-            ) : (
+            
+            (
               <Link
                 key={link.href}
                 href={link.href}
