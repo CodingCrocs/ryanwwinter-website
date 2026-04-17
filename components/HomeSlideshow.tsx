@@ -36,6 +36,9 @@ const slideshowSlides = [
 
 export default function HomeSlideshow() {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [slideFits, setSlideFits] = useState<
+    Record<string, "contain" | "cover">
+  >({});
 
   useEffect(() => {
     const timeoutId = window.setTimeout(() => {
@@ -45,25 +48,49 @@ export default function HomeSlideshow() {
     return () => window.clearTimeout(timeoutId);
   }, [currentSlide]);
 
+  function updateSlideFit(
+    src: string,
+    naturalWidth: number,
+    naturalHeight: number,
+  ) {
+    const nextFit = naturalHeight > naturalWidth ? "contain" : "cover";
+
+    setSlideFits((current) =>
+      current[src] === nextFit ? current : { ...current, [src]: nextFit },
+    );
+  }
+
   return (
-    <div className="rounded-3xl bg-white shadow-sm p-5 md:p-6">
-      <div className="aspect-[5/4] md:aspect-[4/3] rounded-2xl overflow-hidden bg-neutral2 flex flex-col">
-        <div className="relative flex-1 min-h-0">
-          {slideshowSlides.map((slide, index) => (
-            <Image
-              key={slide.src}
-              src={slide.src}
-              alt={slide.alt}
-              fill
-              priority={index === 0}
-              sizes="(max-width: 768px) 100vw, 40vw"
-              className={`object-contain transition-opacity duration-1000 ${
-                index === currentSlide ? "opacity-100" : "opacity-0"
-              }`}
-            />
-          ))}
-        </div>
-      </div>
+    <div
+      className="absolute inset-0 overflow-hidden"
+      aria-hidden="true"
+    >
+      {slideshowSlides.map((slide, index) => {
+        const fit = slideFits[slide.src] ?? "cover";
+
+        return (
+          <Image
+            key={slide.src}
+            src={slide.src}
+            alt=""
+            fill
+            preload={index === 0}
+            sizes="100vw"
+            onLoad={(event) =>
+              updateSlideFit(
+                slide.src,
+                event.currentTarget.naturalWidth,
+                event.currentTarget.naturalHeight,
+              )
+            }
+            className={`pointer-events-none select-none transition-opacity duration-1000 ${
+              fit === "contain"
+                ? "object-contain object-right"
+                : "object-cover object-center"
+            } ${index === currentSlide ? "opacity-100" : "opacity-0"}`}
+          />
+        );
+      })}
     </div>
   );
 }
