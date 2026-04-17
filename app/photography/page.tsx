@@ -1,11 +1,79 @@
+"use client";
+
+import ImagePlaceholder from "@/components/ImagePlaceholder";
+
+const placeholderPhotos = Array.from({ length: 16 }, (_, index) => ({
+  id: index + 1,
+  title: `Placeholder ${String(index + 1).padStart(2, "0")}`,
+}));
+
 export default function PhotographyPage() {
   return (
-    <a
-      href="https://ryanwinter.myportfolio.com/"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      Photography
-    </a>
+    <section className="py-20">
+      <div className="max-w-6xl mx-auto px-6">
+        <div className="rounded-2xl bg-white shadow-sm p-6 md:p-10">
+          <div className="rounded-2xl bg-neutral3 p-4 md:p-5">
+            <div className="overflow-hidden">
+              <div className="photography-marquee flex w-max gap-3">
+                {[...placeholderPhotos, ...placeholderPhotos].map(
+                  (photo, index) => (
+                    <div
+                      key={`${photo.id}-${index}`}
+                      className="w-32 shrink-0 rounded-2xl bg-white/70 p-2 shadow-sm sm:w-36 md:w-40"
+                    >
+                      <ImagePlaceholder
+                        aspectRatio="aspect-square"
+                        label={photo.title}
+                      />
+                    </div>
+                  ),
+                )}
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-10 grid gap-8 md:grid-cols-[1.2fr_0.8fr] md:items-center">
+            <div>
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-secondary">
+                Adobe Portfolio
+              </p>
+              <h1 className="mt-3 text-4xl font-bold">Photography</h1>
+              <p className="mt-4 max-w-2xl text-lg text-neutral1">
+                The full photography work lives on Adobe Portfolio; this page
+                is just a quick preview strip to point visitors to the complete
+                gallery.
+              </p>
+            </div>
+            <div className="flex flex-col gap-4 md:items-start">
+              <a
+                href="https://ryanwinter.myportfolio.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block rounded-full bg-secondary px-7 py-3 text-white font-medium shadow-sm transition-all duration-200 hover:bg-secondary/90 hover:shadow-md"
+              >
+                See Full Adobe Portfolio
+              </a>
+              <p className="text-sm text-neutral1">
+                Includes the full set of shoots, edits, and published albums.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <style jsx>{`
+        .photography-marquee {
+          animation: photography-scroll 36s linear infinite;
+        }
+
+        @keyframes photography-scroll {
+          from {
+            transform: translateX(0);
+          }
+          to {
+            transform: translateX(calc(-50% - 0.375rem));
+          }
+        }
+      `}</style>
+    </section>
   );
 }
