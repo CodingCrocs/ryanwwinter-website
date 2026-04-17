@@ -83,7 +83,7 @@ export default function PhotographyPage() {
       </div>
       <style jsx>{`
         .photography-marquee {
-          animation: photography-scroll 36s linear infinite;
+          animation: photography-scroll 75s linear infinite;
         }
 
         @keyframes photography-scroll {
