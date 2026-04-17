@@ -27,7 +27,10 @@ const experiences: ResumeCardItem[] = [
     bullets: [
       "Directly oversaw a high-impact revenue stream within Facility Rentals, achieving a 30.6% YoY growth from 2024 to 2025, outpacing the overall department's 6.7% YoY growth.",
       "Drove end-to-end delivery of facility rental experiences, from pre-sales discovery and scope definition to cross-functional execution, risk mitigation, and post-event performance analysis.",
-      "Developed an automated generation application for staff using Puppeteer, Node.js, and JavaScript to create a more efficient process for parking pass creation.",
+      "Pioneered new collaborations with local organizations and vendors for novel visitor experiences",
+      "Reinvented department's digital presence, using updated visuals, photography, and client communication to drive positive customer experiences and utilize word-of-mouth to increase sales",
+      "Personally led and executed over 200 bespoke events, ranging from guest counts of 20 to over 1000, navigating Audio/Visual, IT, Facilities, and other crises on a weekly basis",
+      "Led Audio/Visual execution for a wide range of events, utilizing analog and digital sound systems, Dante architectures, NDI, OBS, etc, while minimizing investment in new equipment, limiting department expenditure",
     ],
   },
   {
@@ -122,33 +125,6 @@ function renderCardImage(item: ResumeCardItem) {
   );
 }
 
-const media = [
-  {
-    title: "Live Your Legacy Award Recepient Speech",
-    company: "Braven",
-    dateRange: "December 2024",
-    description:
-      "Received the Live Your Legacy Award at Braven's inaugural term closing ceremony, and spoke about my own legacy.",
-    embedVid: "https://www.youtube.com/embed/Q5Pc5WFRGsA?si=LKul7ak5DOrejfU7",
-  },
-  {
-    title: "KQED's the Forum",
-    company: "KQED",
-    dateRange: "July 2022",
-    description:
-      "represented local collegiate Esports on nationally distributed radio show",
-    embedSpot:
-      "https://open.spotify.com/embed/episode/2DVPUb88vGPqtfSyIUDShp?utm_source=generator&theme=0&t=0",
-  },
-  {
-    title: "Gaming Gators First In-Person Meeting | Fall 2022",
-    company: "Gaming Gators @ SFSU",
-    dateRange: "August 2022",
-    description: "led largest student meeting post pandemic",
-    embedVid: "https://www.youtube.com/embed/9sKEsEAnIHQ?si=iVvXMA859O9OM6Gg",
-  },
-];
-
 function ResumeBulletList({ bullets }: { bullets: string[] }) {
   const [isExpanded, setIsExpanded] = useState(false);
   const visibleBullets = isExpanded ? bullets : bullets.slice(0, 3);
@@ -234,63 +210,6 @@ export default function ResumePage() {
                       </p>
                       <p className="text-neutral1 leading-relaxed">
                         {edu.description}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </CollapsibleSection>
-        <CollapsibleSection title="Media Appearances" defaultOpen={false}>
-          <div className="relative">
-            <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-neutral2 hidden md:block" />
-            <div className="flex flex-col gap-8">
-              {media.map((item, index) => (
-                <div key={index} className="relative md:pl-12">
-                  {/* Timeline dot */}
-                  <div className="absolute left-2.5 top-8 w-3 h-3 rounded-full bg-neutral2 border-2 border-white hidden md:block" />
-
-                  <div className="rounded-2xl bg-white shadow-sm p-6 hover:shadow-md transition-shadow">
-                    {item.embedSpot ? (
-                      <iframe
-                        style={{ borderRadius: "12px" }}
-                        src={item.embedSpot}
-                        width="100%"
-                        height="152"
-                        frameBorder="0"
-                        allowFullScreen
-                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                        loading="lazy"
-                      />
-                    ) : item.embedVid ? (
-                      <iframe
-                        style={{ borderRadius: "12px" }}
-                        src={item.embedVid}
-                        width="100%"
-                        height="420"
-                        frameBorder="0"
-                        allowFullScreen
-                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                        loading="lazy"
-                      />
-                    ) : (
-                      <ImagePlaceholder
-                        aspectRatio="aspect-[3/1]"
-                        label="Background Image"
-                      />
-                    )}
-
-                    <div className="mt-4">
-                      <h3 className="text-xl font-semibold">{item.title}</h3>
-                      <p className="text-secondary font-medium">
-                        {item.company}
-                      </p>
-                      <p className="text-sm text-neutral2 mb-3">
-                        {item.dateRange}
-                      </p>
-                      <p className="text-neutral1 leading-relaxed">
-                        {item.description}
                       </p>
                     </div>
                   </div>
