@@ -34,17 +34,18 @@ const majorSkills = [
   },
   {
     title: "Programming Languages",
-    items:
-    " C++, Java, HTML, CSS, JavaScript, Python, Git"
+    items: " C++, Java, HTML, CSS, JavaScript, Python, Git",
   },
-  {title: "AI Programming Tools",
+  {
+    title: "AI Programming Tools",
     items:
-    "Devin, Windsurf, OpenAI Codex, Claude Code, Gemini, ChatGPT, Claude"
+      "Devin, Windsurf, OpenAI Codex, Claude Code, Gemini, ChatGPT, Claude",
   },
-  {title: "Information Technology",
+  {
+    title: "Information Technology",
     items:
-    "Windows and Mac Troubleshooting, Desktop PC Configuration, Hardware Repairs"
-  }
+      "Windows and Mac Troubleshooting, Desktop PC Configuration, Hardware Repairs",
+  },
 ];
 
 const experiences: ResumeCardItem[] = [
@@ -207,7 +208,9 @@ export default function ResumePage() {
                           {renderCardImage(exp)}
 
                           <div className="mt-3">
-                            <h3 className="text-lg font-semibold">{exp.title}</h3>
+                            <h3 className="text-lg font-semibold">
+                              {exp.title}
+                            </h3>
                             <p className="text-secondary font-medium">
                               {exp.company}
                             </p>
@@ -248,7 +251,9 @@ export default function ResumePage() {
                           {renderCardImage(exp)}
 
                           <div className="mt-3">
-                            <h3 className="text-lg font-semibold">{exp.title}</h3>
+                            <h3 className="text-lg font-semibold">
+                              {exp.title}
+                            </h3>
                             <p className="text-secondary font-medium">
                               {exp.company}
                             </p>
@@ -297,29 +302,29 @@ export default function ResumePage() {
             <div className="relative">
               <div className="absolute left-3.5 top-0 bottom-0 w-0.5 bg-neutral2 hidden md:block" />
               <div className="flex flex-col gap-6">
-              {education.map((edu, index) => (
-                <div key={index} className="relative md:pl-10">
-                  {/* Timeline dot */}
-                  <div className="absolute left-2 top-6 w-3 h-3 rounded-full bg-neutral2 border-2 border-white hidden md:block" />
+                {education.map((edu, index) => (
+                  <div key={index} className="relative md:pl-10">
+                    {/* Timeline dot */}
+                    <div className="absolute left-2 top-6 w-3 h-3 rounded-full bg-neutral2 border-2 border-white hidden md:block" />
 
-                  <div className="rounded-2xl bg-white shadow-sm p-5 hover:shadow-md transition-shadow">
-                    {renderCardImage(edu)}
+                    <div className="rounded-2xl bg-white shadow-sm p-5 hover:shadow-md transition-shadow">
+                      {renderCardImage(edu)}
 
-                    <div className="mt-3">
-                      <h3 className="text-lg font-semibold">{edu.title}</h3>
-                      <p className="text-secondary font-medium">
-                        {edu.company}
-                      </p>
-                      <p className="text-sm text-neutral2 mb-3">
-                        {edu.dateRange}
-                      </p>
-                      <p className="text-neutral1 leading-relaxed">
-                        {edu.description}
-                      </p>
+                      <div className="mt-3">
+                        <h3 className="text-lg font-semibold">{edu.title}</h3>
+                        <p className="text-secondary font-medium">
+                          {edu.company}
+                        </p>
+                        <p className="text-sm text-neutral2 mb-3">
+                          {edu.dateRange}
+                        </p>
+                        <p className="text-neutral1 leading-relaxed">
+                          {edu.description}
+                        </p>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                ))}
               </div>
             </div>
           </div>

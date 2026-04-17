@@ -22,8 +22,7 @@ const projects = [
   },
   {
     title: "Ryan Winter Directory",
-    description:
-      "A website for all Ryan Winters to be found across the world!",
+    description: "A website for all Ryan Winters to be found across the world!",
     imageAlt: "Task Manager Preview",
     href: "#",
   },
@@ -39,6 +38,7 @@ const projects = [
 type EventCardItem = {
   title: string;
   company: string;
+  eventType: string;
   dateRange: string;
   description: string;
   bullets?: string[];
@@ -47,9 +47,38 @@ type EventCardItem = {
 
 const events: EventCardItem[] = [
   {
+    title: "First Friday: A Train Adventure",
+    company: "CuriOdyssey",
+    eventType: "",
+    dateRange: "September 2025",
+    description: "",
+    imageAlt: "Hybrid community event preview",
+    bullets: [
+      "Brainstormed, planned, and executed the largest scale collaboration in CuriOdyssey's history, combining Transit, Science and Wildlife for an engaging visitor experience.",
+      "Created new pathways for community engagement with organizations like Caltrain and CA High Speed Rail",
+      "Coordinated end-to-end logistics, from Food Vendors, Facilities, Staff and Volunteer Allocation, Exhibits, and more.",
+      "Set tone for high-quality events hosted by CuriOdyssey and created examples for future partners",
+    ],
+  },
+  {
+    title: "Gaming Gators Hybrid Meetings",
+    eventType: "",
+    company: "Gaming Gators @ SFSU",
+    dateRange: "2021 - 2023",
+    description: "",
+    imageAlt: "Collegiate esports meetings preview",
+    bullets: [
+      "Built a collaborative network connecting 10 institutions including SJSU, Cal, and Stanford.",
+      "Created a stronger foundation for cross-campus promotions, shared programming, and larger competitive or community-focused events.",
+      "Aligned student organizations across different schools around communication standards, outreach, and event coordination.",
+      "Extended the reach of local collegiate esports by making discovery and collaboration easier across the Bay Area.",
+    ],
+  },
+  {
     title: "CuriOdyssey First Fridays",
     company: "CuriOdyssey",
-    dateRange: "2024 - Present",
+    eventType: "Recurring",
+    dateRange: " September 2024 - Present",
     description: "",
     imageAlt: "Hybrid community event preview",
     bullets: [
@@ -60,25 +89,27 @@ const events: EventCardItem[] = [
     ],
   },
   {
-    title: "Bay Area Collegiate Esports Discord",
-    company: "BACED",
+    title: "Dying Light 2 Influencer and Media Preview",
+    company: "TechLand",
+    eventType: "",
+    dateRange: "November 2021",
+    description:
+      "Supported a live demo activation for influencers and media, managing staffing and concurrent attendee experiences for a high-visibility launch moment.",
+    imageAlt: "Live demo event preview",
+  },
+  {
+    title: "Gaming Gators",
+    company: "Gaming Gators @ SFSU",
+    eventType: "",
     dateRange: "2021 - 2023",
     description: "",
-    imageAlt: "Collegiate esports network preview",
+    imageAlt: "Collegiate esports meetings preview",
     bullets: [
       "Built a collaborative network connecting 10 institutions including SJSU, Cal, and Stanford.",
       "Created a stronger foundation for cross-campus promotions, shared programming, and larger competitive or community-focused events.",
       "Aligned student organizations across different schools around communication standards, outreach, and event coordination.",
       "Extended the reach of local collegiate esports by making discovery and collaboration easier across the Bay Area.",
     ],
-  },
-  {
-    title: "TechLand Dying Light 2 Demo",
-    company: "TechLand",
-    dateRange: "November 2021",
-    description:
-      "Supported a live demo activation for influencers and media, managing staffing and concurrent attendee experiences for a high-visibility launch moment.",
-    imageAlt: "Live demo event preview",
   },
 ];
 
@@ -164,7 +195,8 @@ export default function PortfolioPage() {
       <div className="max-w-6xl mx-auto px-6">
         <h1 className="text-4xl font-bold mb-4">Portfolio</h1>
         <p className="text-neutral1 text-lg mb-12">
-          A selection of my coding projects, events I've organized, and some of my speeches!
+          A selection of my coding projects, events I've organized, and some of
+          my speeches!
         </p>
 
         <CollapsibleSection title="Software Projects" defaultOpen={false}>
@@ -204,7 +236,10 @@ export default function PortfolioPage() {
           </div>
         </CollapsibleSection>
 
-        <CollapsibleSection title="Media Appearances & Speaking Engagements" defaultOpen={false}>
+        <CollapsibleSection
+          title="Media Appearances & Speaking Engagements"
+          defaultOpen={false}
+        >
           <div className="relative">
             <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-neutral2 hidden md:block" />
             <div className="flex flex-col gap-8">

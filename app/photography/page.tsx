@@ -39,8 +39,8 @@ export default function PhotographyPage() {
               </p>
               <h1 className="mt-3 text-4xl font-bold">Ryan Winter Photos</h1>
               <p className="mt-4 max-w-2xl text-lg text-neutral1">
-                 I'm always open 
-                for any interesting opportunities, feel free to reach out to me on LinkedIn or Instagram!
+                I'm always open for any interesting opportunities, feel free to
+                reach out to me on LinkedIn or Instagram!
               </p>
             </div>
             <div className="flex flex-col gap-4 md:items-start">
@@ -67,12 +67,17 @@ export default function PhotographyPage() {
         <div className="mt-10 rounded-2xl bg-white shadow-sm p-6 md:p-10">
           <h2 className="text-2xl font-bold mb-4">My Photography Story</h2>
           <p className="text-neutral1 leading-relaxed">
-            Photography was a bit of an accident for me. When I joined CuriOdyssey, I immediately recognized the need
-            for high-quality images in our ability to find clients and professionalize our marketing presence for Facility Rentals.
-            At a small non-profit however, the resources for marketing-ready images were limited, and I determined that the onus fell
-            onto me to address the issue that I recognized. After some significant personal investment, I slowly learned the skills
-            to take great photos, specifically with the goals of a larger business purpose in mind. Now I've taken photography outside
-            of my work, and have started to apply it across events, sports, headshots, and more.
+            Photography was a bit of an accident for me. When I joined
+            CuriOdyssey, I immediately recognized the need for high-quality
+            images in our ability to find clients and professionalize our
+            marketing presence for Facility Rentals. At a small non-profit
+            however, the resources for marketing-ready images were limited, and
+            I determined that the onus fell onto me to address the issue that I
+            recognized. After some significant personal investment, I slowly
+            learned the skills to take great photos, specifically with the goals
+            of a larger business purpose in mind. Now I've taken photography
+            outside of my work, and have started to apply it across events,
+            sports, headshots, and more.
           </p>
         </div>
       </div>
