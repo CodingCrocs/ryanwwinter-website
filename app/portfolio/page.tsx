@@ -102,7 +102,7 @@ const events: EventCardItem[] = [
     company: "TechLand",
     eventType: "Special Event",
     dateRange: "November 2021",
-    image: "/ryandyinglight.JPEG",
+    image: "/resume/ryandyinglight.JPEG",
     imagePosition: "center 35%",
     description:
       "Coordinated staffing for demonstration featuring multiple gaming influencers and media outlets totaling over 15 million views, managing concurrent user experiences in a shared environment",

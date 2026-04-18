@@ -69,7 +69,7 @@ const experiences: ResumeCardItem[] = [
   },
   {
     title: "Overwatch 2 Esports Course Instructor",
-    image: "/ryaninriyadh.JPEG",
+    image: "/resume/ryaninriyadh.JPEG",
     imagePosition: "center 65%",
     company: "Gen. G Esports",
     dateRange: "Jun 2023 - Sept 2023",
@@ -83,7 +83,7 @@ const experiences: ResumeCardItem[] = [
   },
   {
     title: "President and Events Manager",
-    image:"/ggsfsu-guildhouse.JPG",
+    image:"/resume/ggsfsu-guildhouse.JPG",
     company: "Gaming Gators @ SFSU",
     hideImage: false,
     dateRange: "Apr 2021 - Apr 2023",
@@ -101,7 +101,7 @@ const experiences: ResumeCardItem[] = [
   },
   {
     title: "Dying Light 2 Demo Crew Member",
-    image: "/ryandyinglight.JPEG",
+    image: "/resume/ryandyinglight.JPEG",
     imagePosition: "center 35%",
     company: "TechLand",
     dateRange: "Nov. 2021",
@@ -110,7 +110,7 @@ const experiences: ResumeCardItem[] = [
   },
   {
     title: "Overwatch Manager and Team Captain",
-    image: "/GGSFSU-Fresno.JPEG",
+    image: "/resume/GGSFSU-Fresno.JPEG",
     imagePosition: "center 50%",
     company: "Gaming Gators @ SFSU",
     dateRange: "Jan 2021 - July 2023",
@@ -124,7 +124,7 @@ const experiences: ResumeCardItem[] = [
   },
   {
     title: "Semi-Professional Overwatch Esports Athlete",
-    image: "/GGSFSU-Fresno.JPEG",
+    image: "/resume/GGSFSU-Fresno.JPEG",
     hideImage: true,
     imagePosition: "center 50%",
     company: "N/A",
@@ -235,8 +235,20 @@ function ResumeBulletList({ bullets }: { bullets: string[] }) {
 
 export default function ResumePage() {
   return (
-    <section className="py-20">
-      <div className="max-w-4xl mx-auto px-6">
+    <section className="relative overflow-hidden py-20">
+      <div className="absolute inset-x-0 top-0 h-[22rem]">
+        <Image
+          src="/header-images/redbull-pose.JPEG"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center"
+        />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(214,238,255,0.15)_0%,rgba(214,238,255,0.7)_38%,rgba(214,238,255,0.94)_65%,rgba(214,238,255,1)_100%)]" />
+      </div>
+
+      <div className="relative z-10 max-w-4xl mx-auto px-6">
         <h1 className="text-4xl font-bold mb-4">Resume</h1>
         <p className="text-neutral1 text-lg mb-12">
           Find my work experience, skills, and education here!
