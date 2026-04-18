@@ -41,6 +41,10 @@ export default function HomeSlideshow() {
   >({});
 
   useEffect(() => {
+    setCurrentSlide(Math.floor(Math.random() * slideshowSlides.length));
+  }, []);
+
+  useEffect(() => {
     const timeoutId = window.setTimeout(() => {
       setCurrentSlide((index) => (index + 1) % slideshowSlides.length);
     }, 8500);
