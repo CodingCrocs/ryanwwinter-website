@@ -11,6 +11,7 @@ const projects = [
     title: "This Website!",
     description:
       "A simple site meant to showcase my varied experiences and applications, using Next.JS with React and JSX Libraries.",
+    image: "/website.png",
     imageAlt: "Resume Website Preview",
     href: "https://www.ryanwwinter.com/",
   },
@@ -101,7 +102,7 @@ const events: EventCardItem[] = [
     company: "TechLand",
     eventType: "Special Event",
     dateRange: "November 2021",
-    image: "/ryandyinglight.JPEG",
+    image: "/resume/ryandyinglight.JPEG",
     imagePosition: "center 35%",
     description:
       "Coordinated staffing for demonstration featuring multiple gaming influencers and media outlets totaling over 15 million views, managing concurrent user experiences in a shared environment",
@@ -156,6 +157,7 @@ function ProjectGrid({
   items: {
     title: string;
     description: string;
+    image?: string;
     imageAlt: string;
     href?: string;
   }[];
@@ -167,6 +169,7 @@ function ProjectGrid({
           key={item.title}
           title={item.title}
           description={item.description}
+          image={item.image}
           imageAlt={item.imageAlt}
           href={item.href}
         />

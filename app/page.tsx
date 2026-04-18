@@ -22,7 +22,7 @@ export default function Home() {
               <h1 className="text-4xl md:text-5xl font-bold mb-4">
                 Hi, I&apos;m Ryan!
               </h1>
-              <p className="mb-8 max-w-lg text-lg text-neutral1">
+              <p className="mb-8 max-w-lg text-lg text-black">
                 An Experienced Professional with a varied background in Tech,
                 Esports, Events, and Media.
               </p>

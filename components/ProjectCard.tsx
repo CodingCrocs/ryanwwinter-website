@@ -1,8 +1,10 @@
+import Image from "next/image";
 import ImagePlaceholder from "./ImagePlaceholder";
 
 interface ProjectCardProps {
   title: string;
   description: string;
+  image?: string;
   imageAlt: string;
   href?: string;
 }
@@ -10,12 +12,25 @@ interface ProjectCardProps {
 export default function ProjectCard({
   title,
   description,
+  image,
   imageAlt,
   href,
 }: ProjectCardProps) {
   return (
     <div className="rounded-2xl bg-white shadow-sm hover:shadow-lg transition-shadow overflow-hidden">
-      <ImagePlaceholder aspectRatio="aspect-video" label={imageAlt} />
+      {image ? (
+        <div className="relative aspect-video overflow-hidden bg-neutral2">
+          <Image
+            src={image}
+            alt={imageAlt}
+            fill
+            sizes="(max-width: 768px) 100vw, 50vw"
+            className="object-cover"
+          />
+        </div>
+      ) : (
+        <ImagePlaceholder aspectRatio="aspect-video" label={imageAlt} />
+      )}
       <div className="p-6">
         <h3 className="text-lg font-semibold mb-2">{title}</h3>
         <p className="text-neutral1 text-sm mb-4">{description}</p>

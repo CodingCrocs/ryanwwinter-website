@@ -29,8 +29,36 @@ const photos = [
 
 export default function PhotographyPage() {
   return (
-    <section className="py-20">
-      <div className="max-w-6xl mx-auto px-6">
+    <section className="relative overflow-hidden py-20">
+      <div className="absolute inset-x-0 top-0 h-[24rem]">
+        <Image
+          src="/header-images/curio-flowers.jpg"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center"
+        />
+        <div className="absolute inset-y-0 left-0 w-[48%] overflow-hidden">
+          <Image
+            src="/header-images/store-stuffies-small.jpg"
+            alt=""
+            fill
+            priority
+            sizes="48vw"
+            className="object-cover object-left"
+            style={{
+              maskImage:
+                "linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.95) 62%, rgba(0,0,0,0) 100%)",
+              WebkitMaskImage:
+                "linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.95) 62%, rgba(0,0,0,0) 100%)",
+            }}
+          />
+        </div>
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(214,238,255,0.12)_0%,rgba(214,238,255,0.6)_32%,rgba(214,238,255,0.9)_58%,rgba(214,238,255,1)_100%)]" />
+      </div>
+
+      <div className="relative z-10 max-w-6xl mx-auto px-6 pt-10 md:pt-14">
         <div className="rounded-2xl bg-white shadow-sm p-6 md:p-10">
           <div className="rounded-2xl bg-neutral3 p-4 md:p-5">
             <div className="overflow-hidden">
