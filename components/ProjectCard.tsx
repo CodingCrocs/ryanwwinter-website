@@ -1,4 +1,13 @@
+import Image from "next/image";
 import ImagePlaceholder from "./ImagePlaceholder";
+
+interface ProjectCardProps {
+  title: string;
+  description: string;
+  image?: string;
+  imageAlt: string;
+  href?: string;
+}
 
 interface ProjectCardProps {
   title: string;
