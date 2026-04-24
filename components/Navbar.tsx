@@ -16,11 +16,11 @@ export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-md shadow-sm rounded-b-2xl">
+    <nav className="sticky top-0 z-50 rounded-b-2xl border-b border-white/10 bg-[#645d5d]/90 shadow-sm backdrop-blur-md">
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
         <Link
           href="/"
-          className="text-xl font-bold text-[#1a1a2e] hover:text-primary transition-colors"
+          className="text-xl font-bold text-white hover:text-primary transition-colors"
         >
           Ryan Winter
         </Link>
@@ -52,17 +52,17 @@ export default function Navbar() {
           aria-label="Toggle menu"
         >
           <span
-            className={`block w-6 h-0.5 bg-[#1a1a2e] transition-transform duration-200 ${
+            className={`block w-6 h-0.5 bg-white transition-transform duration-200 ${
               mobileMenuOpen ? "rotate-45 translate-y-2" : ""
             }`}
           />
           <span
-            className={`block w-6 h-0.5 bg-[#1a1a2e] transition-opacity duration-200 ${
+            className={`block w-6 h-0.5 bg-white transition-opacity duration-200 ${
               mobileMenuOpen ? "opacity-0" : ""
             }`}
           />
           <span
-            className={`block w-6 h-0.5 bg-[#1a1a2e] transition-transform duration-200 ${
+            className={`block w-6 h-0.5 bg-white transition-transform duration-200 ${
               mobileMenuOpen ? "-rotate-45 -translate-y-2" : ""
             }`}
           />

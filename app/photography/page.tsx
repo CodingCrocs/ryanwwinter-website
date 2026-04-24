@@ -31,15 +31,15 @@ export default function PhotographyPage() {
   return (
     <section className="py-20">
       <div className="max-w-6xl mx-auto px-6">
-        <div className="rounded-2xl bg-white shadow-sm p-6 md:p-10">
-          <div className="rounded-2xl bg-neutral3 p-4 md:p-5">
+        <div className="rounded-2xl border border-white/10 bg-[#645d5d] p-6 shadow-sm md:p-10">
+          <div className="rounded-2xl bg-[#4f4949]/80 p-4 md:p-5">
             <div className="overflow-hidden">
               <div className="photography-marquee flex w-max gap-3">
                 {[...photos, ...photos].map(
                   (photo, index) => (
                     <div
                       key={`${photo.src}-${index}`}
-                      className="w-32 shrink-0 rounded-2xl bg-white/70 p-2 shadow-sm sm:w-36 md:w-40"
+                      className="w-32 shrink-0 rounded-2xl bg-[#746c6c]/80 p-2 shadow-sm sm:w-36 md:w-40"
                     >
                       <div className="relative aspect-square overflow-hidden rounded-xl bg-neutral2">
                         <Image
@@ -73,7 +73,7 @@ export default function PhotographyPage() {
                 href="https://ryanwinter.myportfolio.com/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block rounded-full bg-secondary px-7 py-3 text-white font-medium shadow-sm transition-all duration-200 hover:bg-secondary/90 hover:shadow-md"
+                className="inline-block rounded-full bg-secondary px-7 py-3 text-[#1f1a1a] font-medium shadow-sm transition-all duration-200 hover:bg-secondary/90 hover:shadow-md"
               >
                 See Full Adobe Portfolio
               </a>
@@ -81,7 +81,7 @@ export default function PhotographyPage() {
                 href="https://www.instagram.com/ryanwinterphotos/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block rounded-full bg-white px-7 py-3 text-secondary font-medium shadow-sm ring-1 ring-secondary/20 transition-all duration-200 hover:bg-neutral3 hover:shadow-md"
+                className="inline-block rounded-full bg-[#706969] px-7 py-3 text-neutral1 font-medium shadow-sm ring-1 ring-white/10 transition-all duration-200 hover:bg-[#7a7272] hover:shadow-md"
               >
                 Follow on Instagram
               </a>
@@ -89,7 +89,7 @@ export default function PhotographyPage() {
           </div>
         </div>
 
-        <div className="mt-10 rounded-2xl bg-white shadow-sm p-6 md:p-10">
+        <div className="mt-10 rounded-2xl border border-white/10 bg-[#645d5d] p-6 shadow-sm md:p-10">
           <h2 className="text-2xl font-bold mb-4">My Photography Story</h2>
           <p className="text-neutral1 leading-relaxed">
             Photography was a bit of an accident for me. When I joined

@@ -101,7 +101,7 @@ const events: EventCardItem[] = [
     company: "TechLand",
     eventType: "Special Event",
     dateRange: "November 2021",
-    image: "/ryandyinglight.JPEG",
+    image: "/resume/ryandyinglight.JPEG",
     imagePosition: "center 35%",
     description:
       "Coordinated staffing for demonstration featuring multiple gaming influencers and media outlets totaling over 15 million views, managing concurrent user experiences in a shared environment",
@@ -218,7 +218,7 @@ export default function PortfolioPage() {
             {events.map((event) => (
               <div
                 key={event.title}
-                className="rounded-2xl bg-white shadow-sm p-6 hover:shadow-md transition-shadow"
+                className="rounded-2xl border border-white/10 bg-[#645d5d] p-6 shadow-sm transition-shadow hover:shadow-md"
               >
                 {event.image ? (
                   <div className="relative aspect-[3/1] overflow-hidden rounded-2xl bg-neutral2">
@@ -270,7 +270,7 @@ export default function PortfolioPage() {
                 <div key={index} className="relative md:pl-12">
                   <div className="absolute left-2.5 top-8 w-3 h-3 rounded-full bg-neutral2 border-2 border-white hidden md:block" />
 
-                  <div className="rounded-2xl bg-white shadow-sm p-6 hover:shadow-md transition-shadow">
+                  <div className="rounded-2xl border border-white/10 bg-[#645d5d] p-6 shadow-sm transition-shadow hover:shadow-md">
                     {/* When you curate media visuals, replace these embeds or the fallback
                         with your preferred thumbnail / still image treatment. */}
                     {item.embedSpot ? (

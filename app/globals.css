@@ -3,8 +3,9 @@
 
 @layer base {
   body {
-    background-color: #2fa0f0;
-    color: #8e919c;
+    background-color: #585252;
+    color: #e2dcdc;
+    font-family: "elza-text", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -15,16 +16,21 @@
   h4,
   h5,
   h6 {
-    color: #1a1a2e;
+    color: #ffffff;
+    font-family: "manifold-cf", sans-serif;
     font-weight: 700;
   }
 
+  p {
+    font-family: "elza-text", sans-serif;
+  }
+
   a {
-    color: #7ee673;
+    color: #26ce23;
     transition: color 0.2s ease;
   }
 
   a:hover {
-    color: #6bd45f;
+    color: #4ce14a;
   }
 }

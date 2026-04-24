@@ -69,7 +69,7 @@ const experiences: ResumeCardItem[] = [
   },
   {
     title: "Overwatch 2 Esports Course Instructor",
-    image: "/ryaninriyadh.JPEG",
+    image: "/resume/ryaninriyadh.JPEG",
     imagePosition: "center 65%",
     company: "Gen. G Esports",
     dateRange: "Jun 2023 - Sept 2023",
@@ -83,7 +83,7 @@ const experiences: ResumeCardItem[] = [
   },
   {
     title: "President and Events Manager",
-    image:"/ggsfsu-guildhouse.JPG",
+    image:"/resume/ggsfsu-guildhouse.JPG",
     company: "Gaming Gators @ SFSU",
     hideImage: false,
     dateRange: "Apr 2021 - Apr 2023",
@@ -101,7 +101,7 @@ const experiences: ResumeCardItem[] = [
   },
   {
     title: "Dying Light 2 Demo Crew Member",
-    image: "/ryandyinglight.JPEG",
+    image: "/resume/ryandyinglight.JPEG",
     imagePosition: "center 35%",
     company: "TechLand",
     dateRange: "Nov. 2021",
@@ -110,7 +110,7 @@ const experiences: ResumeCardItem[] = [
   },
   {
     title: "Overwatch Manager and Team Captain",
-    image: "/GGSFSU-Fresno.JPEG",
+    image: "/resume/GGSFSU-Fresno.JPEG",
     imagePosition: "center 50%",
     company: "Gaming Gators @ SFSU",
     dateRange: "Jan 2021 - July 2023",
@@ -124,7 +124,7 @@ const experiences: ResumeCardItem[] = [
   },
   {
     title: "Semi-Professional Overwatch Esports Athlete",
-    image: "/GGSFSU-Fresno.JPEG",
+    image: "/resume/GGSFSU-Fresno.JPEG",
     hideImage: true,
     imagePosition: "center 50%",
     company: "N/A",
@@ -243,12 +243,12 @@ export default function ResumePage() {
         </p>
 
         <div className="hidden lg:block mb-12">
-          <div className="mx-auto max-w-4xl rounded-3xl bg-white p-6 shadow-sm">
+          <div className="mx-auto max-w-4xl rounded-3xl border border-white/10 bg-[#645d5d] p-6 shadow-sm">
             <h2 className="mb-6 flex items-center gap-3 text-4xl font-bold text-secondary">
               Work Experience
             </h2>
             <div className="max-h-[70vh] overflow-y-auto">
-              <div className="mx-auto max-w-3xl rounded-2xl bg-neutral3/40 p-4 md:p-6">
+              <div className="mx-auto max-w-3xl rounded-2xl bg-[#4f4949]/80 p-4 md:p-6">
                 <div className="relative">
                   <div className="absolute left-3.5 top-0 bottom-0 w-0.5 bg-neutral2 hidden md:block" />
                   <div className="flex flex-col gap-6">
@@ -257,7 +257,7 @@ export default function ResumePage() {
                         {/* Timeline dot */}
                         <div className="absolute left-2 top-6 w-3 h-3 rounded-full bg-neutral2 border-2 border-white hidden md:block" />
 
-                        <div className="rounded-2xl bg-white shadow-sm p-5 hover:shadow-md transition-shadow">
+                        <div className="rounded-2xl border border-white/10 bg-[#706969] p-5 shadow-sm transition-shadow hover:shadow-md">
                           {renderCardImage(exp)}
 
                           <div className="mt-3">
@@ -293,8 +293,8 @@ export default function ResumePage() {
 
         <div className="lg:hidden">
           <CollapsibleSection title="Work Experience" defaultOpen={true}>
-            <div className="mx-auto max-w-4xl lg:max-h-[70vh] lg:overflow-y-auto lg:rounded-3xl lg:bg-white lg:p-6 lg:shadow-sm">
-              <div className="mx-auto max-w-3xl rounded-2xl bg-neutral3/40 p-4 md:p-6">
+            <div className="mx-auto max-w-4xl lg:max-h-[70vh] lg:overflow-y-auto lg:rounded-3xl lg:border lg:border-white/10 lg:bg-[#645d5d] lg:p-6 lg:shadow-sm">
+              <div className="mx-auto max-w-3xl rounded-2xl bg-[#4f4949]/80 p-4 md:p-6">
                 <div className="relative">
                   <div className="absolute left-3.5 top-0 bottom-0 w-0.5 bg-neutral2 hidden md:block" />
                   <div className="flex flex-col gap-6">
@@ -303,7 +303,7 @@ export default function ResumePage() {
                         {/* Timeline dot */}
                         <div className="absolute left-2 top-6 w-3 h-3 rounded-full bg-neutral2 border-2 border-white hidden md:block" />
 
-                        <div className="rounded-2xl bg-white shadow-sm p-5 hover:shadow-md transition-shadow">
+                        <div className="rounded-2xl border border-white/10 bg-[#706969] p-5 shadow-sm transition-shadow hover:shadow-md">
                           {renderCardImage(exp)}
 
                           <div className="mt-3">
@@ -337,7 +337,7 @@ export default function ResumePage() {
           </CollapsibleSection>
         </div>
 
-        <div className="mb-12 rounded-3xl bg-white p-6 shadow-sm md:p-8">
+        <div className="mb-12 rounded-3xl border border-white/10 bg-[#645d5d] p-6 shadow-sm md:p-8">
           <h2 className="mb-6 flex items-center gap-3 text-4xl font-bold text-secondary">
             Major Skills
           </h2>
@@ -345,7 +345,7 @@ export default function ResumePage() {
             {majorSkills.map((skill) => (
               <div
                 key={skill.title}
-                className="rounded-2xl bg-neutral3/60 p-4 shadow-sm"
+                className="rounded-2xl bg-[#4f4949]/80 p-4 shadow-sm"
               >
                 <h3 className="text-lg font-semibold mb-2">{skill.title}</h3>
                 <p className="text-sm text-neutral1 leading-relaxed">
@@ -357,7 +357,7 @@ export default function ResumePage() {
         </div>
 
         <CollapsibleSection title="Education" defaultOpen={false}>
-          <div className="mx-auto max-w-3xl rounded-2xl bg-neutral3/40 p-4 md:p-6">
+          <div className="mx-auto max-w-3xl rounded-2xl bg-[#4f4949]/80 p-4 md:p-6">
             <div className="relative">
               <div className="absolute left-3.5 top-0 bottom-0 w-0.5 bg-neutral2 hidden md:block" />
               <div className="flex flex-col gap-6">
@@ -366,7 +366,7 @@ export default function ResumePage() {
                     {/* Timeline dot */}
                     <div className="absolute left-2 top-6 w-3 h-3 rounded-full bg-neutral2 border-2 border-white hidden md:block" />
 
-                    <div className="rounded-2xl bg-white shadow-sm p-5 hover:shadow-md transition-shadow">
+                    <div className="rounded-2xl border border-white/10 bg-[#706969] p-5 shadow-sm transition-shadow hover:shadow-md">
                       <div>
                         <div className="flex items-start justify-between gap-4">
                           <h3 className="text-lg font-semibold">{edu.title}</h3>
