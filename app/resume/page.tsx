@@ -439,7 +439,7 @@ export default function ResumePage() {
   }
 
   return (
-    <section className="py-20" onClickCapture={handleResumeSectionClick}>
+    <section className="site-surface-gradient py-20" onClickCapture={handleResumeSectionClick}>
       <div className="max-w-4xl mx-auto px-6">
         <h1 className="text-4xl font-bold mb-4">Resume</h1>
         <p className="text-neutral1 text-lg mb-12">{resumeIntro}</p>

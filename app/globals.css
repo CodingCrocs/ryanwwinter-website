@@ -39,3 +39,17 @@
     color: var(--color-secondary);
   }
 }
+
+@layer components {
+  .site-surface-gradient {
+    background-color: var(--color-surface);
+    background-image:
+      radial-gradient(
+        circle at top left,
+        color-mix(in srgb, var(--color-dark) 22%, var(--color-surface)) 0%,
+        color-mix(in srgb, var(--color-accent) 10%, var(--color-surface)) 18%,
+        var(--color-surface) 42%
+      );
+    background-repeat: no-repeat;
+  }
+}

@@ -22,9 +22,9 @@ const socialLinks = [
 
 export default function Home() {
   return (
-    <div>
+    <div className="site-surface-gradient">
       {/* Hero Section */}
-      <section className="relative isolate overflow-hidden bg-neutral3">
+      <section className="relative isolate overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(96,205,193,0.28),transparent_42%),linear-gradient(180deg,rgba(255,255,255,0.45),rgba(255,255,255,0))]" />
         <div className="relative z-10 mx-auto grid min-h-[34rem] max-w-6xl gap-10 px-6 py-16 md:px-10 md:py-20 lg:grid-cols-[minmax(0,1fr)_24rem] lg:items-center lg:px-16">
           <div className="max-w-2xl">
