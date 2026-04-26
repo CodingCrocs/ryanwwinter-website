@@ -1,161 +1,75 @@
-# Ryan Winter — Personal Website
+# Ryan Winter Website
 
-A personal portfolio website built with [Next.js](https://nextjs.org/), [TypeScript](https://www.typescriptlang.org/), and [Tailwind CSS](https://tailwindcss.com/). Features a landing page, interactive resume, project portfolio, and photography redirect.
+Personal site built with Next.js 16, React 19, TypeScript, and Tailwind CSS v4.
 
----
+## Stack
 
-## Prerequisites
+- Next.js app router
+- React 19
+- TypeScript
+- Tailwind CSS v4
+- Framer Motion
 
-Before you start, you need to install a few things on your computer:
-
-### 1. Install Node.js (v20 LTS)
-
-- Go to [https://nodejs.org/](https://nodejs.org/)
-- Download the **LTS** version (v20.x)
-- Run the installer and follow the prompts (default settings are fine)
-- To verify it worked, open a terminal and run:
-  ```
-  node --version
-  ```
-  You should see something like `v20.x.x`
-
-### 2. Install pnpm (package manager)
-
-- Open your terminal and run:
-  ```
-  npm install -g pnpm
-  ```
-- Verify with:
-  ```
-  pnpm --version
-  ```
-
-### 3. Install VS Code (recommended IDE)
-
-- Download from [https://code.visualstudio.com/](https://code.visualstudio.com/)
-- Install these extensions (click the Extensions icon in the left sidebar, or press `Ctrl+Shift+X` / `Cmd+Shift+X`):
-  - **ESLint** (by Microsoft) — catches code errors
-  - **Prettier - Code formatter** (by Prettier) — auto-formats your code
-  - **Tailwind CSS IntelliSense** (by Tailwind Labs) — autocomplete for Tailwind classes
-  - **TypeScript Importer** — helps with auto-imports
-  - **ES7+ React/Redux/React-Native snippets** — useful code shortcuts
-
-### 4. VS Code Settings (recommended)
-
-Open VS Code Settings (`Ctrl+,` / `Cmd+,`) and set:
-
-- "Format On Save": enabled
-- "Default Formatter": select "Prettier"
-
-Or add this to your `.vscode/settings.json` (already included in this repo):
-
-```json
-{
-  "editor.formatOnSave": true,
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.tabSize": 2,
-  "typescript.preferences.importModuleSpecifier": "non-relative"
-}
-```
-
----
-
-## Getting Started
-
-### 1. Clone the repository
-
-Open VS Code, then open the integrated terminal (`Ctrl+`` ` / `` Cmd+` ``):
-
-```bash
-git clone https://github.com/CodingCrocs/ryanwwinter-website.git
-cd ryanwwinter-website
-```
-
-### 2. Install dependencies
-
-In the same terminal:
+## Scripts
 
 ```bash
 pnpm install
-```
-
-This reads `package.json` and downloads all the libraries the project needs into a `node_modules/` folder. This may take a minute the first time.
-
-### 3. Start the development server
-
-```bash
 pnpm dev
-```
-
-This starts a local server. Open your browser to **http://localhost:3000** to see the site.
-
-The dev server has **hot reload** — when you save a file, the browser updates automatically. You don't need to restart the server.
-
-### 4. Stop the server
-
-Press `Ctrl+C` in the terminal.
-
-### 5. Build for production
-
-```bash
+pnpm lint
 pnpm build
+pnpm start
 ```
 
-This creates an optimized version of the site. Run `pnpm start` to preview the production build locally.
+Local development runs at [http://localhost:3000](http://localhost:3000) by default.
 
----
+## Routes
+
+- `/` home / intro
+- `/resume` interactive resume and timeline
+- `/portfolio` software, events, and media work
+- `/photography` photography landing page with gallery preview and outbound links
 
 ## Project Structure
 
-```
-├── app/                       # All your pages live here
-│   ├── layout.tsx             # The "wrapper" around every page (nav, footer, fonts)
-│   ├── page.tsx               # The homepage (localhost:3000/)
-│   ├── resume/page.tsx        # The resume page (localhost:3000/resume)
-│   ├── portfolio/page.tsx     # The portfolio page (localhost:3000/portfolio)
-│   └── photography/page.tsx   # Redirects to Adobe Portfolio
-├── components/                # Reusable UI pieces (navbar, buttons, cards)
-│   ├── Navbar.tsx             # Top navigation bar
-│   ├── SocialLink.tsx         # Pill-shaped social media link button
-│   ├── ProjectCard.tsx        # Portfolio project card
-│   └── ImagePlaceholder.tsx   # Reusable image placeholder
-├── public/                    # Static files (images, favicon) — drop files here
-├── tailwind.config.ts         # Color scheme and style customization
-├── package.json               # Lists all dependencies and scripts
-└── tsconfig.json              # TypeScript configuration (don't need to touch this)
-```
+```text
+app/
+  layout.tsx              shared document shell, metadata, navbar, footer
+  globals.css             global styles and Tailwind imports
+  page.tsx                homepage
+  resume/
+    page.tsx              resume UI
+    content.ts            resume content data
+  portfolio/
+    page.tsx              portfolio UI
+    content.ts            portfolio content data
+  photography/
+    page.tsx              photography UI
+    content.ts            photography content data
 
----
+components/
+  Navbar.tsx
+  SocialLink.tsx
+  ProjectCard.tsx
+  CollapsibleSection.tsx
+  HomeSlideshow.tsx
+  ImagePlaceholder.tsx
 
-## Common Tasks
-
-**Adding an image:**
-
-1. Drop your image file into the `public/` folder (e.g., `public/my-photo.jpg`)
-2. Reference it in code as `/my-photo.jpg` (the `public/` prefix is not needed)
-
-**Changing colors:**
-
-Edit `tailwind.config.ts` — the custom colors are defined under `theme.extend.colors`
-
-**Adding a new page:**
-
-Create a new folder under `app/` with a `page.tsx` file. For example, `app/contact/page.tsx` automatically creates a `/contact` route.
-
-**Installing a new package:**
-
-```bash
-pnpm add package-name
+public/
+  header-images/
+  slideshow/
+  resume/
+  events/
+  photography/
+  logos/
 ```
 
----
+## Content Notes
 
-## Troubleshooting
+- Most editable page copy and card data now lives in each route's `content.ts`.
+- Static images live in `public/` and are referenced with root-relative paths like `/resume/ggsfsu-guildhouse.JPG`.
+- Global colors and font tokens are defined across [tailwind.config.ts](./tailwind.config.ts) and [app/globals.css](./app/globals.css).
 
-**"command not found: pnpm"** — Run `npm install -g pnpm` first
+## Maintenance Notes
 
-**"command not found: node"** — Install Node.js from [https://nodejs.org/](https://nodejs.org/)
-
-**Port 3000 already in use** — Another app is using that port. Stop it, or run `pnpm dev -- -p 3001` to use a different port
-
-**Type errors in VS Code but build works** — Try restarting VS Code or running `Cmd+Shift+P` → "TypeScript: Restart TS Server"
+- This repo uses modern Next.js; check `node_modules/next/dist/docs/` before making framework-level changes.
+- The README is intended to describe the current implementation, not generic beginner setup.

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import SocialLink from "@/components/SocialLink";
 
 const socialLinks = [
@@ -37,15 +38,23 @@ export default function Home() {
               An experienced professional with a varied background in tech,
               esports, events, and media.
             </p>
-            <div className="flex flex-wrap gap-4">
-              {socialLinks.map((link) => (
-                <SocialLink
-                  key={link.label}
-                  label={link.label}
-                  href={link.href}
-                  iconSrc={link.iconSrc}
-                />
-              ))}
+            <div className="w-fit">
+              <div className="flex flex-wrap gap-4">
+                {socialLinks.map((link) => (
+                  <SocialLink
+                    key={link.label}
+                    label={link.label}
+                    href={link.href}
+                    iconSrc={link.iconSrc}
+                  />
+                ))}
+              </div>
+              <Link
+                href="/resume"
+                className="mt-4 flex h-14 w-[12.5rem] items-center justify-center rounded-xl bg-dark text-base font-semibold text-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-neutral1 hover:shadow-md"
+              >
+                View Resume
+              </Link>
             </div>
           </div>
 
