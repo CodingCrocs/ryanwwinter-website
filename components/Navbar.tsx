@@ -20,7 +20,7 @@ export default function Navbar() {
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
         <Link
           href="/"
-          className="text-xl font-bold text-[#1a1a2e] hover:text-primary transition-colors"
+          className="font-display text-xl font-bold text-dark transition-colors hover:text-primary"
         >
           Ryan Winter
         </Link>
@@ -52,17 +52,17 @@ export default function Navbar() {
           aria-label="Toggle menu"
         >
           <span
-            className={`block w-6 h-0.5 bg-[#1a1a2e] transition-transform duration-200 ${
+            className={`block h-0.5 w-6 bg-dark transition-transform duration-200 ${
               mobileMenuOpen ? "rotate-45 translate-y-2" : ""
             }`}
           />
           <span
-            className={`block w-6 h-0.5 bg-[#1a1a2e] transition-opacity duration-200 ${
+            className={`block h-0.5 w-6 bg-dark transition-opacity duration-200 ${
               mobileMenuOpen ? "opacity-0" : ""
             }`}
           />
           <span
-            className={`block w-6 h-0.5 bg-[#1a1a2e] transition-transform duration-200 ${
+            className={`block h-0.5 w-6 bg-dark transition-transform duration-200 ${
               mobileMenuOpen ? "-rotate-45 -translate-y-2" : ""
             }`}
           />

@@ -2,9 +2,18 @@
 @config "../tailwind.config.ts";
 
 @layer base {
+  :root {
+    --color-primary: #37c740;
+    --color-secondary: #71b660;
+    --color-accent: #60cdc1;
+    --color-dark: #5a5a5a;
+    --color-surface: #f3fbf4;
+  }
+
   body {
-    background-color: #2fa0f0;
-    color: #8e919c;
+    background-color: var(--color-surface);
+    color: var(--color-dark);
+    font-family: elza-text, ui-sans-serif, system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -15,16 +24,18 @@
   h4,
   h5,
   h6 {
-    color: #1a1a2e;
+    color: var(--color-dark);
+    font-family: manifold-cf, ui-sans-serif, system-ui, sans-serif;
     font-weight: 700;
+    line-height: 0.95;
   }
 
   a {
-    color: #7ee673;
+    color: var(--color-primary);
     transition: color 0.2s ease;
   }
 
   a:hover {
-    color: #6bd45f;
+    color: var(--color-secondary);
   }
 }

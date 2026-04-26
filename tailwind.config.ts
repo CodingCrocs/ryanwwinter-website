@@ -8,11 +8,17 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        primary: "#7EE673",
-        secondary: "#9D63D5",
-        neutral1: "#8E919C",
-        neutral2: "#AAADC4",
-        neutral3: "#D6EEFF",
+        primary: "#37C740",
+        secondary: "#71B660",
+        accent: "#60CDC1",
+        dark: "#5A5A5A",
+        neutral1: "#5A5A5A",
+        neutral2: "#9A9A9A",
+        neutral3: "#F3FBF4",
+      },
+      fontFamily: {
+        sans: ["elza", "ui-sans-serif", "system-ui", "sans-serif"],
+        display: ["manifold", "ui-sans-serif", "system-ui", "sans-serif"],
       },
       borderRadius: {
         soft: "0.75rem",

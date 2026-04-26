@@ -3,184 +3,133 @@
 import Image from "next/image";
 import ImagePlaceholder from "@/components/ImagePlaceholder";
 import CollapsibleSection from "@/components/CollapsibleSection";
-import { useState } from "react";
+import { useEffect, useRef, useState, type MouseEvent, type PointerEvent } from "react";
+import {
+  education,
+  experiences,
+  majorSkills,
+  resumeIntro,
+  timelineItems,
+  timelineYears,
+  type ResumeCardItem,
+  type TimelineItem,
+} from "./content";
 
-type ResumeCardItem = {
-  title: string;
-  subtitle?: string;
-  company: string;
-  dateRange: string;
-  description: string;
-  bullets?: string[];
-  location?: string;
-  image?: string;
-  hideImage?: boolean;
-  imagePosition?: string;
-  imageAspect?: string;
+const degreeTimelineItem: TimelineItem = {
+  id: "timeline-bachelors-of-science-sfsu",
+  jobTitle: "Bachelor's of Science",
+  org: "San Francisco State University",
+  above: true,
+  hidden: false,
+  start: ["January", 2020],
+  end: ["December", 2026],
+  summary:
+    "Pursuing a computer science degree with a business administration minor at San Francisco State University.",
+  resumeCardId: "bachelors-of-science-sfsu",
 };
 
-const majorSkills = [
-  {
-    title: "Event & Production Technology",
-    items:
-      "OBS, NDI workflows, Dante audio networking, hybrid analog/digital AV systems",
-  },
-  {
-    title: "Digital & Web Marketing Tools",
-    items:
-      "Photoshop, Lightroom Classic, Premiere Pro, InDesign, Canva, WordPress",
-  },
-  {
-    title: "Data & Analytics",
-    items: "Python, MySQL, MongoDB, Microsoft Excel, Google Sheets",
-  },
-  {
-    title: "Programming Languages",
-    items: " C++, Java, HTML, CSS, JavaScript, Python, Git",
-  },
-  {
-    title: "AI Programming Tools",
-    items:
-      "Devin, Windsurf, OpenAI Codex, Claude Code, Gemini, ChatGPT, Claude",
-  },
-  {
-    title: "Information Technology",
-    items:
-      "Windows and Mac Troubleshooting, Desktop PC Configuration, Hardware Repairs",
-  },
+const timelineAccentStyles = [
+  { bar: "#37C740", text: "#2f8f35" },
+  { bar: "#60CDC1", text: "#2d8f86" },
+  { bar: "#d95c5c", text: "#a53f3f" },
 ];
 
-const experiences: ResumeCardItem[] = [
-  {
-    title: "Events Assistant",
-    company: "CuriOdyssey",
-    hideImage: true,
-    dateRange: "Fall 2024 — Present",
-    location: "San Mateo, CA",
-    description: "",
-    bullets: [
-      "Directly oversaw a high-impact revenue stream within Facility Rentals, achieving a 30.6% YoY growth from 2024 to 2025, outpacing the overall department's 6.7% YoY growth.",
-      "Drove end-to-end delivery of facility rental experiences, from pre-sales discovery and scope definition to cross-functional execution, risk mitigation, and post-event performance analysis.",
-      "Pioneered new collaborations with local organizations and vendors for novel visitor experiences",
-      "Reinvented department's digital presence, using updated visuals, photography, and client communication to drive positive customer experiences and utilize word-of-mouth to increase sales",
-      "Personally led and executed over 200 bespoke events, ranging from guest counts of 20 to over 1000, navigating Audio/Visual, IT, Facilities, and other crises on a weekly basis",
-      "Led Audio/Visual execution for a wide range of events, utilizing analog and digital sound systems, Dante architectures, NDI, OBS, etc, while minimizing investment in new equipment, limiting department expenditure",
-    ],
-  },
-  {
-    title: "Overwatch 2 Esports Course Instructor",
-    image: "/resume/ryaninriyadh.JPEG",
-    imagePosition: "center 65%",
-    company: "Gen. G Esports",
-    dateRange: "Jun 2023 - Sept 2023",
-    location: "Riyadh, Saudi Arabia",
-    description: "",
-    bullets: [
-      "Created 16+ Weeks of new advanced course content focused on systematic problem-solving and in-depth game mechanics.",
-      "Collaborated with international partners and conducted extensive data analysis to integrate diverse strategies and solutions to improve service offerings.",
-      "Curated 70+ pages of reports to supervising agencies about the program's successes including student retention, technology improvements, and the incorporation of online courses into the academy.",
-    ],
-  },
-  {
-    title: "President and Events Manager",
-    image:"/resume/ggsfsu-guildhouse.JPG",
-    company: "Gaming Gators @ SFSU",
-    hideImage: false,
-    dateRange: "Apr 2021 - Apr 2023",
-    description: "",
-    bullets: [
-      "Overhauled social media and drove at least 200% growth across Instagram, Twitter, and Discord.",
-      "Expanded Discord from 500 members to more than 2,000 while maintaining roughly 50% active membership.",
-      "Led weekly meetings for a diverse team of 40+ officers across team management, event organization, and content production.",
-      "Hosted monthly hybrid meetings for 300+ attendees.",
-      "Coordinated events from ideation through execution and post-event analysis.",
-      "Created BACED, the Bay Area Collegiate Esports Discord, to connect 10 institutions including SJSU, Cal, and Stanford.",
-      "Built sponsor relationships with companies including Red Bull, NRG, and Haunt.",
-      "Supported inclusivity in gaming by helping establish women-led teams and departments.",
-    ],
-  },
-  {
-    title: "Dying Light 2 Demo Crew Member",
-    image: "/resume/ryandyinglight.JPEG",
-    imagePosition: "center 35%",
-    company: "TechLand",
-    dateRange: "Nov. 2021",
-    description:
-      "Coordinated staffing for demonstration featuring multiple gaming influencers and media outlets totaling over 15 million views, managing concurrent user experiences in a shared environment",
-  },
-  {
-    title: "Overwatch Manager and Team Captain",
-    image: "/resume/GGSFSU-Fresno.JPEG",
-    imagePosition: "center 50%",
-    company: "Gaming Gators @ SFSU",
-    dateRange: "Jan 2021 - July 2023",
-    description: "",
-    bullets: [
-      "Created the team in October 2021 and finished 48th in North America in its first season.",
-      "Organized a same-day team road trip from San Francisco to a LAN in Fresno and back.",
-      "Helped the program earn recognition as the best CSU Overwatch team as of February 12, 2022.",
-      "Placed in the top 30 in both Overwatch 2 seasons while playing multiple roles.",
-    ],
-  },
-  {
-    title: "Semi-Professional Overwatch Esports Athlete",
-    image: "/resume/GGSFSU-Fresno.JPEG",
-    hideImage: true,
-    imagePosition: "center 50%",
-    company: "N/A",
-    dateRange: "2019 - 2023",
-    description: "",
-    bullets: [
-      "Pursued a professional Esports career, playing on amateur teams and professional training squads",
-      "Climbed from below 1500SR to over 4400SR, top 50 in North America",
-      "Played in multiple tryouts for Tier 1 professional teams",
-      "Operated a personal Twitch stream and coaching YouTube channel",
-    ],
-  },
-  {
-    title: "Amateur Overwatch Tutor and Coach",
-    company: "Miscellaneous",
-    dateRange: "2019 - 2021",
-    hideImage: true,
-    description: "",
-    bullets: [
-      "Coached Bronze to Platinum level pickup games, offering individual critique to 12+ players across every role.",
-      "Joined a struggling amateur tournament team, transitioned from last place to 3rd in one season",
-      "Created improvement plans for players after reviewing short gameplay samples.",
-      "Helped many repeat students climb consistently from Silver to Diamond.",
-    ],
-  },
-  {
-    title: "Computer Science Mentor",
-    company: "SFSU",
-    hideImage: true,
-    dateRange: "Aug 2021 - Jan 2022",
-    description:
-      "Monitored and guided students through complex programming concepts.",
-  },
-];
+function getExperienceCardId(id: string) {
+  return `resume-experience-${id}`;
+}
 
-const education: ResumeCardItem[] = [
-  {
-    title: "Bachelor's of Science",
-    subtitle: "Minor in Business Administration",
-    company: "San Francisco State University",
-    dateRange: "2020-Present",
-    description: "received deans list spring 2024",
-  },
-  {
-    title: "CompTIA+ Certification",
-    company: "Self-Study",
-    dateRange: "Jan 2026 - Present",
-    description: "Studied for and passed w",
-  },
-  {
-    title: "AV Associate",
-    company: "Extron",
-    dateRange: "March 2025",
-    description: "Learned the basics of Audio/Visual Technology, including cables, waveforms, and AV over IP",
-  },
-];
+function getEducationCardId(id: string) {
+  return `resume-education-${id}`;
+}
+
+const monthStartFractions: Record<string, number> = {
+  january: 0 / 6,
+  february: 0 / 6,
+  march: 1 / 6,
+  april: 1 / 6,
+  may: 2 / 6,
+  june: 2 / 6,
+  july: 3 / 6,
+  august: 3 / 6,
+  september: 4 / 6,
+  october: 4 / 6,
+  november: 5 / 6,
+  december: 5 / 6,
+};
+
+function getTimelineBoundaryOffset(
+  [month, year]: TimelineItem["start"],
+  years: number[],
+  yearCellWidthRem: number,
+  boundary: "start" | "end",
+) {
+  const yearIndex = years.indexOf(year);
+  const clampedYearIndex =
+    yearIndex >= 0
+      ? yearIndex
+      : year > years[0]
+        ? 0
+        : Math.max(years.length - 1, 0);
+  const monthFraction = monthStartFractions[month.toLowerCase()] ?? 0;
+  const fractionWithinYear =
+    boundary === "start" ? monthFraction : monthFraction + 1 / 6;
+  const fraction = 1 - fractionWithinYear;
+  return clampedYearIndex * yearCellWidthRem + fraction * yearCellWidthRem;
+}
+
+function getTimelineMarkerMetrics(
+  item: TimelineItem,
+  years: string[],
+  yearCellWidthRem: number,
+) {
+  const numericYears = years.map(Number);
+  const minimumSliceRem = yearCellWidthRem / 6;
+  const left = getTimelineBoundaryOffset(
+    item.start,
+    numericYears,
+    yearCellWidthRem,
+    "start",
+  );
+  const right = getTimelineBoundaryOffset(
+    item.end,
+    numericYears,
+    yearCellWidthRem,
+    "end",
+  );
+
+  return {
+    leftRem: Math.min(left, right),
+    widthRem: Math.max(Math.abs(right - left), minimumSliceRem),
+  };
+}
+
+function getTimelineMarkerStyle(
+  item: TimelineItem,
+  years: string[],
+  yearCellWidthRem: number,
+) {
+  const { leftRem, widthRem } = getTimelineMarkerMetrics(
+    item,
+    years,
+    yearCellWidthRem,
+  );
+
+  return {
+    left: `${leftRem}rem`,
+    width: `${widthRem}rem`,
+  };
+}
+
+// Staggers markers across stacked lanes to reduce overlap when multiple items share similar years.
+function getTimelineLane(index: number, laneCount: number) {
+  return index % laneCount;
+}
+
+function formatTimelineRange(item: TimelineItem) {
+  const [startMonth, startYear] = item.start;
+  const [endMonth, endYear] = item.end;
+  return `${startMonth} ${startYear} - ${endMonth} ${endYear}`;
+}
 
 function renderCardImage(item: ResumeCardItem) {
   if (item.hideImage) {
@@ -233,120 +182,423 @@ function ResumeBulletList({ bullets }: { bullets: string[] }) {
   );
 }
 
-export default function ResumePage() {
+function ResumeExperienceCard({
+  item,
+  cardId,
+}: {
+  item: ResumeCardItem;
+  cardId: string;
+}) {
   return (
-    <section className="relative overflow-hidden py-20">
-      <div className="absolute inset-x-0 top-0 h-[22rem]">
-        <Image
-          src="/header-images/redbull-pose.JPEG"
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover object-center"
-        />
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(214,238,255,0.15)_0%,rgba(214,238,255,0.7)_38%,rgba(214,238,255,0.94)_65%,rgba(214,238,255,1)_100%)]" />
+    <article
+      id={cardId}
+      className="rounded-2xl bg-white p-5 shadow-sm transition-shadow hover:shadow-md"
+    >
+      {renderCardImage(item)}
+
+      <div className="mt-3">
+        <div className="flex items-start justify-between gap-4">
+          <h3 className="text-lg font-semibold">{item.title}</h3>
+          <p className="shrink-0 text-sm text-neutral2">{item.dateRange}</p>
+        </div>
+        <p className="text-secondary font-medium">{item.company}</p>
+        <div className="mb-3" />
+        {item.bullets?.length ? (
+          <ResumeBulletList bullets={item.bullets} />
+        ) : (
+          <p className="text-neutral1 leading-relaxed">{item.description}</p>
+        )}
       </div>
+    </article>
+  );
+}
 
-      <div className="relative z-10 max-w-4xl mx-auto px-6">
+function TimelineExpandedCard({
+  item,
+  accentStyle,
+  onLearnMore,
+}: {
+  item: TimelineItem;
+  accentStyle: { bar: string; text: string };
+  onLearnMore: () => void;
+}) {
+  return (
+    <div
+      data-timeline-interactive="true"
+      className="min-h-[13.5rem] w-full max-w-3xl rounded-2xl bg-white p-5 shadow-lg"
+      style={{
+        border: `2px solid ${accentStyle.bar}`,
+      }}
+    >
+      <div className="flex items-start justify-between gap-4">
+        <div className="min-w-0">
+          <h3 className="truncate text-2xl font-bold text-dark">{item.org}</h3>
+          <p className="mt-1 text-sm font-semibold uppercase tracking-[0.12em] text-neutral1">
+            {item.jobTitle}
+          </p>
+          <p className="mt-2 text-sm text-neutral2">{formatTimelineRange(item)}</p>
+        </div>
+        <div className="h-16 w-16 shrink-0 rounded-xl bg-neutral3 ring-1 ring-neutral2" />
+      </div>
+      <p className="mt-4 text-sm leading-6 text-neutral1">{item.summary}</p>
+      <button
+        type="button"
+        onClick={onLearnMore}
+        className="mt-4 inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.12em]"
+        style={{ color: accentStyle.text }}
+      >
+        <span aria-hidden="true">→</span>
+        <span>Learn more</span>
+      </button>
+    </div>
+  );
+}
+
+export default function ResumePage() {
+  const [visibleExperienceCount, setVisibleExperienceCount] = useState(3);
+  const [openTimelineItemId, setOpenTimelineItemId] = useState<string | null>(null);
+  const [yearCellWidthRem, setYearCellWidthRem] = useState(16);
+  const loadMoreRef = useRef<HTMLDivElement | null>(null);
+  const timelineViewportRef = useRef<HTMLDivElement | null>(null);
+  const timelineScrollRef = useRef<HTMLDivElement | null>(null);
+  const timelineDragStateRef = useRef<{
+    pointerId: number | null;
+    startX: number;
+    startScrollLeft: number;
+  }>({
+    pointerId: null,
+    startX: 0,
+    startScrollLeft: 0,
+  });
+  const timelineDraggedRef = useRef(false);
+  const [isTimelineDragging, setIsTimelineDragging] = useState(false);
+  // Top lanes are for paid items, bottom lanes are for unpaid/non-paid items.
+  const topTimelineLaneCount = 5;
+  const bottomTimelineLaneCount = 3;
+  // Reduce this for tighter vertical stacking, increase it for more separation between rows.
+  const timelineLaneGapRem = 2.2;
+  const timelineTrackWidth = `${timelineYears.length * yearCellWidthRem}rem`;
+  const visibleEducation = education.filter((item) => !item.hidden);
+  const visibleExperiences = experiences.filter((experience) => !experience.hidden);
+  const visibleTimelineItems = timelineItems.filter((item) => !item.hidden);
+  const allTimelineItems = [...visibleTimelineItems, degreeTimelineItem];
+  const topTimelineItems = visibleTimelineItems.filter((item) => item.above);
+  const bottomTimelineItems = visibleTimelineItems.filter((item) => !item.above);
+  const openTimelineItem =
+    allTimelineItems.find((item) => item.id === openTimelineItemId) ?? null;
+  const openTimelineAccentStyle = openTimelineItem?.id === degreeTimelineItem.id
+    ? { bar: "#6f2c91", text: "#6f2c91" }
+    : openTimelineItem
+      ? timelineAccentStyles[
+          (openTimelineItem.above
+            ? topTimelineItems.findIndex((item) => item.id === openTimelineItem.id)
+            : bottomTimelineItems.findIndex((item) => item.id === openTimelineItem.id)) %
+            timelineAccentStyles.length
+        ]
+    : null;
+
+  useEffect(() => {
+    function updateTimelineScale() {
+      const viewportWidth = window.innerWidth;
+      const containerWidth =
+        timelineScrollRef.current?.clientWidth ??
+        timelineViewportRef.current?.clientWidth ??
+        viewportWidth;
+      const desktopWidthBufferPx = 12;
+      const desktopUsableWidthPx =
+        containerWidth - (viewportWidth >= 768 ? desktopWidthBufferPx : 0);
+      const availableWidthRem =
+        desktopUsableWidthPx / 16 / timelineYears.length;
+
+      // Desktop fits the actual visible container; mobile keeps a wider track so drag-scroll still matters.
+      setYearCellWidthRem(
+        viewportWidth >= 768 ? availableWidthRem : Math.max(12, availableWidthRem),
+      );
+    }
+
+    updateTimelineScale();
+    const resizeObserver = new ResizeObserver(updateTimelineScale);
+    if (timelineViewportRef.current) {
+      resizeObserver.observe(timelineViewportRef.current);
+    }
+    window.addEventListener("resize", updateTimelineScale);
+
+    return () => {
+      resizeObserver.disconnect();
+      window.removeEventListener("resize", updateTimelineScale);
+    };
+  }, []);
+
+  useEffect(() => {
+    const node = loadMoreRef.current;
+
+    if (!node || visibleExperienceCount >= visibleExperiences.length) {
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0]?.isIntersecting) {
+          setVisibleExperienceCount((current) =>
+            Math.min(current + 3, visibleExperiences.length),
+          );
+        }
+      },
+      { rootMargin: "160px 0px" },
+    );
+
+    observer.observe(node);
+
+    return () => observer.disconnect();
+  }, [visibleExperienceCount, visibleExperiences.length]);
+
+  function handleTimelinePointerDown(event: PointerEvent<HTMLDivElement>) {
+    const container = timelineScrollRef.current;
+
+    if (!container) {
+      return;
+    }
+
+    timelineDragStateRef.current = {
+      pointerId: event.pointerId,
+      startX: event.clientX,
+      startScrollLeft: container.scrollLeft,
+    };
+    timelineDraggedRef.current = false;
+    setIsTimelineDragging(true);
+    container.setPointerCapture(event.pointerId);
+  }
+
+  function handleTimelinePointerMove(event: PointerEvent<HTMLDivElement>) {
+    const container = timelineScrollRef.current;
+    const dragState = timelineDragStateRef.current;
+
+    if (!container || dragState.pointerId !== event.pointerId) {
+      return;
+    }
+
+    const deltaX = event.clientX - dragState.startX;
+    if (Math.abs(deltaX) > 4) {
+      timelineDraggedRef.current = true;
+    }
+    container.scrollLeft = dragState.startScrollLeft - deltaX;
+  }
+
+  function handleTimelinePointerEnd(event: PointerEvent<HTMLDivElement>) {
+    const container = timelineScrollRef.current;
+    const dragState = timelineDragStateRef.current;
+
+    if (!container || dragState.pointerId !== event.pointerId) {
+      return;
+    }
+
+    if (container.hasPointerCapture(event.pointerId)) {
+      container.releasePointerCapture(event.pointerId);
+    }
+
+    timelineDragStateRef.current.pointerId = null;
+    timelineDraggedRef.current = false;
+    setIsTimelineDragging(false);
+  }
+
+  function handleTimelineItemClick(itemId: string) {
+    if (timelineDraggedRef.current) {
+      return;
+    }
+
+    setOpenTimelineItemId((current) => (current === itemId ? null : itemId));
+  }
+
+  function handleTimelineLearnMore(item: TimelineItem) {
+    if (!item.resumeCardId) {
+      return;
+    }
+
+    const target =
+      document.getElementById(getExperienceCardId(item.resumeCardId)) ??
+      document.getElementById(getEducationCardId(item.resumeCardId));
+    if (!target) {
+      return;
+    }
+
+    target.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
+  function handleResumeSectionClick(event: MouseEvent<HTMLElement>) {
+    const target = event.target;
+
+    if (!(target instanceof HTMLElement)) {
+      return;
+    }
+
+    if (target.closest("[data-timeline-interactive='true']")) {
+      return;
+    }
+
+    setOpenTimelineItemId(null);
+  }
+
+  return (
+    <section className="py-20" onClickCapture={handleResumeSectionClick}>
+      <div className="max-w-4xl mx-auto px-6">
         <h1 className="text-4xl font-bold mb-4">Resume</h1>
-        <p className="text-neutral1 text-lg mb-12">
-          Find my work experience, skills, and education here!
-        </p>
+        <p className="text-neutral1 text-lg mb-12">{resumeIntro}</p>
 
-        <div className="hidden lg:block mb-12">
-          <div className="mx-auto max-w-4xl rounded-3xl bg-white p-6 shadow-sm">
-            <h2 className="mb-6 flex items-center gap-3 text-4xl font-bold text-secondary">
-              Work Experience
-            </h2>
-            <div className="max-h-[70vh] overflow-y-auto">
-              <div className="mx-auto max-w-3xl rounded-2xl bg-neutral3/40 p-4 md:p-6">
-                <div className="relative">
-                  <div className="absolute left-3.5 top-0 bottom-0 w-0.5 bg-neutral2 hidden md:block" />
-                  <div className="flex flex-col gap-6">
-                    {experiences.map((exp, index) => (
-                      <div key={index} className="relative md:pl-10">
-                        {/* Timeline dot */}
-                        <div className="absolute left-2 top-6 w-3 h-3 rounded-full bg-neutral2 border-2 border-white hidden md:block" />
+        <div className="mb-12">
+          <div className="mb-6 flex items-end justify-between gap-4">
+            
+          </div>
 
-                        <div className="rounded-2xl bg-white shadow-sm p-5 hover:shadow-md transition-shadow">
-                          {renderCardImage(exp)}
+          <div
+            className={`${openTimelineItem && openTimelineAccentStyle ? "sticky top-6 z-10" : ""} mb-6 flex justify-center`}
+          >
+            {openTimelineItem && openTimelineAccentStyle ? (
+              <TimelineExpandedCard
+                item={openTimelineItem}
+                accentStyle={openTimelineAccentStyle}
+                onLearnMore={() => handleTimelineLearnMore(openTimelineItem)}
+              />
+            ) : (
+              <div className="flex min-h-[13.5rem] w-full max-w-3xl items-center justify-center rounded-2xl border-2 border-dashed border-neutral2 bg-white/80 p-5 text-center text-sm font-medium uppercase tracking-[0.12em] text-neutral2">
+                Click on the timeline to see details
+              </div>
+            )}
+          </div>
 
-                          <div className="mt-3">
-                            <div className="flex items-start justify-between gap-4">
-                              <h3 className="text-lg font-semibold">
-                                {exp.title}
-                              </h3>
-                              <p className="shrink-0 text-sm text-neutral2">
-                                {exp.dateRange}
-                              </p>
-                            </div>
-                            <p className="text-secondary font-medium">
-                              {exp.company}
-                            </p>
-                            <div className="mb-3" />
-                            {exp.bullets?.length ? (
-                              <ResumeBulletList bullets={exp.bullets} />
-                            ) : (
-                              <p className="text-neutral1 leading-relaxed">
-                                {exp.description}
-                              </p>
-                            )}
-                          </div>
-                        </div>
-                      </div>
-                    ))}
+          <div
+            ref={timelineViewportRef}
+            className="relative left-1/2 w-[min(100vw-2rem,140%)] -translate-x-1/2 px-6"
+          >
+            <div
+              ref={timelineScrollRef}
+              tabIndex={0}
+              onPointerDown={handleTimelinePointerDown}
+              onPointerMove={handleTimelinePointerMove}
+              onPointerUp={handleTimelinePointerEnd}
+              onPointerCancel={handleTimelinePointerEnd}
+              onLostPointerCapture={() => setIsTimelineDragging(false)}
+              className={`overflow-x-auto overflow-y-visible pt-6 outline-none [scrollbar-width:thin] ${isTimelineDragging ? "select-none md:cursor-auto cursor-grabbing" : "cursor-auto"}`}
+            >
+              <div
+                className="mx-auto flex min-w-max flex-col items-center gap-5"
+                style={{ width: timelineTrackWidth }}
+              >
+              <div
+                className="relative w-full"
+                style={{
+                  height: `${topTimelineLaneCount * timelineLaneGapRem + 0.4}rem`,
+                }}
+              >
+                {/* Upper marker lanes: timeline items marked `above: true` in content.ts. */}
+                {topTimelineItems.map((item, index) => (
+                  <button
+                    key={item.id}
+                    type="button"
+                    data-timeline-interactive="true"
+                    aria-label={`Placeholder logo marker for ${item.jobTitle}`}
+                    onPointerDown={(event) => event.stopPropagation()}
+                    onClick={() => handleTimelineItemClick(item.id)}
+                    className="absolute top-0 h-3 rounded-full transition-opacity hover:opacity-80 focus:outline-none focus:ring-2 focus:ring-primary"
+                    style={{
+                      ...getTimelineMarkerStyle(
+                        item,
+                        timelineYears,
+                        yearCellWidthRem,
+                      ),
+                      backgroundColor:
+                        timelineAccentStyles[index % timelineAccentStyles.length].bar,
+                      top: `${getTimelineLane(index, topTimelineLaneCount) * timelineLaneGapRem}rem`,
+                    }}
+                  >
+                    <span
+                      className="absolute -top-5 left-0 truncate text-[10px] font-semibold uppercase tracking-[0.12em]"
+                      style={{
+                        color:
+                          timelineAccentStyles[index % timelineAccentStyles.length].text,
+                      }}
+                    >
+                      {item.jobTitle} | {item.org}
+                    </span>
+                  </button>
+                ))}
+              </div>
+
+              <div className="relative h-6 w-full">
+                {/* Degree bar: adjust the hardcoded date range or color here if you want it to span differently. */}
+                <button
+                  type="button"
+                  data-timeline-interactive="true"
+                  aria-label="Timeline marker for Bachelor's of Science"
+                  onPointerDown={(event) => event.stopPropagation()}
+                  onClick={() => handleTimelineItemClick(degreeTimelineItem.id)}
+                  className="absolute top-0 flex h-3 items-center rounded-full bg-[#6f2c91] transition-opacity hover:opacity-80 focus:outline-none focus:ring-2 focus:ring-[#6f2c91]"
+                  style={getTimelineMarkerStyle(
+                    degreeTimelineItem,
+                    timelineYears,
+                    yearCellWidthRem,
+                  )}
+                >
+                  <span className="absolute -top-5 left-0 truncate text-[10px] font-semibold uppercase tracking-[0.12em] text-[#6f2c91]">
+                    Bachelor&apos;s of Science | San Francisco State University
+                  </span>
+                </button>
+              </div>
+
+              <div className="flex w-full overflow-hidden rounded-full bg-primary text-white shadow-sm">
+                {/* Year strip: each cell width is tied to yearCellWidthRem above. */}
+                {timelineYears.map((year) => (
+                  <div
+                    key={year}
+                    className="flex h-14 items-center justify-center border-r border-white/20 px-2 py-2 text-[clamp(1rem,2.2vw,1.75rem)] font-semibold tracking-[0.18em] last:border-r-0"
+                    style={{ width: `${yearCellWidthRem}rem` }}
+                  >
+                    {year}
                   </div>
-                </div>
+                ))}
+              </div>
+
+              <div
+                className="relative w-full"
+                style={{
+                  height: `${bottomTimelineLaneCount * timelineLaneGapRem}rem`,
+                }}
+              >
+                {/* Lower marker lanes: timeline items marked `above: false` in content.ts. */}
+                {bottomTimelineItems.map((item, index) => (
+                  <button
+                    key={item.id}
+                    type="button"
+                    data-timeline-interactive="true"
+                    aria-label={`Placeholder logo marker for ${item.jobTitle}`}
+                    onPointerDown={(event) => event.stopPropagation()}
+                    onClick={() => handleTimelineItemClick(item.id)}
+                    className="absolute top-0 h-3 rounded-full transition-opacity hover:opacity-80 focus:outline-none focus:ring-2 focus:ring-primary"
+                    style={{
+                      ...getTimelineMarkerStyle(
+                        item,
+                        timelineYears,
+                        yearCellWidthRem,
+                      ),
+                      backgroundColor:
+                        timelineAccentStyles[index % timelineAccentStyles.length].bar,
+                      top: `${getTimelineLane(index, bottomTimelineLaneCount) * timelineLaneGapRem}rem`,
+                    }}
+                  >
+                    <span
+                      className="absolute -top-5 left-0 truncate text-[10px] font-semibold uppercase tracking-[0.12em]"
+                      style={{
+                        color:
+                          timelineAccentStyles[index % timelineAccentStyles.length].text,
+                      }}
+                    >
+                      {item.jobTitle} | {item.org}
+                    </span>
+                  </button>
+                ))}
               </div>
             </div>
           </div>
-        </div>
-
-        <div className="lg:hidden">
-          <CollapsibleSection title="Work Experience" defaultOpen={true}>
-            <div className="mx-auto max-w-4xl lg:max-h-[70vh] lg:overflow-y-auto lg:rounded-3xl lg:bg-white lg:p-6 lg:shadow-sm">
-              <div className="mx-auto max-w-3xl rounded-2xl bg-neutral3/40 p-4 md:p-6">
-                <div className="relative">
-                  <div className="absolute left-3.5 top-0 bottom-0 w-0.5 bg-neutral2 hidden md:block" />
-                  <div className="flex flex-col gap-6">
-                    {experiences.map((exp, index) => (
-                      <div key={index} className="relative md:pl-10">
-                        {/* Timeline dot */}
-                        <div className="absolute left-2 top-6 w-3 h-3 rounded-full bg-neutral2 border-2 border-white hidden md:block" />
-
-                        <div className="rounded-2xl bg-white shadow-sm p-5 hover:shadow-md transition-shadow">
-                          {renderCardImage(exp)}
-
-                          <div className="mt-3">
-                            <div className="flex items-start justify-between gap-4">
-                              <h3 className="text-lg font-semibold">
-                                {exp.title}
-                              </h3>
-                              <p className="shrink-0 text-sm text-neutral2">
-                                {exp.dateRange}
-                              </p>
-                            </div>
-                            <p className="text-secondary font-medium">
-                              {exp.company}
-                            </p>
-                            <div className="mb-3" />
-                            {exp.bullets?.length ? (
-                              <ResumeBulletList bullets={exp.bullets} />
-                            ) : (
-                              <p className="text-neutral1 leading-relaxed">
-                                {exp.description}
-                              </p>
-                            )}
-                          </div>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </CollapsibleSection>
+          </div>
         </div>
 
         <div className="mb-12 rounded-3xl bg-white p-6 shadow-sm md:p-8">
@@ -368,16 +620,17 @@ export default function ResumePage() {
           </div>
         </div>
 
-        <CollapsibleSection title="Education" defaultOpen={false}>
+        <CollapsibleSection title="Education" defaultOpen={true}>
           <div className="mx-auto max-w-3xl rounded-2xl bg-neutral3/40 p-4 md:p-6">
             <div className="relative">
               <div className="absolute left-3.5 top-0 bottom-0 w-0.5 bg-neutral2 hidden md:block" />
               <div className="flex flex-col gap-6">
-                {education.map((edu, index) => (
-                  <div key={index} className="relative md:pl-10">
-                    {/* Timeline dot */}
-                    <div className="absolute left-2 top-6 w-3 h-3 rounded-full bg-neutral2 border-2 border-white hidden md:block" />
-
+                {visibleEducation.map((edu, index) => (
+                  <div
+                    key={edu.id}
+                    id={getEducationCardId(edu.id)}
+                    className="relative md:pl-10"
+                  >
                     <div className="rounded-2xl bg-white shadow-sm p-5 hover:shadow-md transition-shadow">
                       <div>
                         <div className="flex items-start justify-between gap-4">
@@ -406,6 +659,31 @@ export default function ResumePage() {
             </div>
           </div>
         </CollapsibleSection>
+
+        <div className="mt-12">
+          <div className="mb-6 flex items-end justify-between gap-4">
+            <h2 className="flex items-center gap-3 text-4xl font-bold text-secondary">
+              Work Experience
+            </h2>
+            <p className="text-sm text-neutral2">Scroll to load more</p>
+          </div>
+
+          <div className="flex flex-col gap-6">
+            {visibleExperiences.slice(0, visibleExperienceCount).map((exp, index) => (
+              <ResumeExperienceCard
+                key={exp.id}
+                item={exp}
+                cardId={getExperienceCardId(exp.id)}
+              />
+            ))}
+          </div>
+
+          {visibleExperienceCount < visibleExperiences.length ? (
+            <div ref={loadMoreRef} className="py-8 text-center text-sm text-neutral2">
+              Loading more experience...
+            </div>
+          ) : null}
+        </div>
       </div>
     </section>
   );

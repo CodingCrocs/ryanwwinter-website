@@ -1,19 +1,21 @@
+import Image from "next/image";
+
 interface SocialLinkProps {
   label: string;
   href: string;
-  icon?: React.ReactNode;
+  iconSrc: string;
 }
 
-export default function SocialLink({ label, href, icon }: SocialLinkProps) {
+export default function SocialLink({ label, href, iconSrc }: SocialLinkProps) {
   return (
     <a
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-2.5 text-white font-medium shadow-sm transition-all duration-200 hover:bg-primary/90 hover:shadow-md hover:scale-105"
+      aria-label={label}
+      className="inline-flex h-14 w-14 items-center justify-center rounded-xl bg-primary shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-secondary hover:shadow-md"
     >
-      {icon && <span>{icon}</span>}
-      {label}
+      <Image src={iconSrc} alt="" width={24} height={24} className="h-6 w-6" />
     </a>
   );
 }

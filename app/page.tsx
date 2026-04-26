@@ -1,11 +1,22 @@
+import Image from "next/image";
 import SocialLink from "@/components/SocialLink";
-import HomeSlideshow from "@/components/HomeSlideshow";
 
 const socialLinks = [
-  { label: "Instagram", href: "https://www.instagram.com/ryanwinterphotos/" },
-  { label: "GitHub", href: "https://github.com/CodingCrocs" },
-  { label: "LinkedIn", href: "https://www.linkedin.com/in/ryanwwinter/" },
-  { label: "Adobe Portfolio", href: "https://ryanwinter.myportfolio.com/" },
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com/ryanwinterphotos/",
+    iconSrc: "/logos/instagram-white-icon.svg",
+  },
+  {
+    label: "GitHub",
+    href: "https://github.com/CodingCrocs",
+    iconSrc: "/logos/github-white-icon.svg",
+  },
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/ryanwwinter/",
+    iconSrc: "/logos/linkedin-app-white-icon.svg",
+  },
 ];
 
 export default function Home() {
@@ -13,27 +24,42 @@ export default function Home() {
     <div>
       {/* Hero Section */}
       <section className="relative isolate overflow-hidden bg-neutral3">
-        <HomeSlideshow />
-        <div className="absolute inset-0 bg-slate-950/25" />
-        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(214,238,255,0.98)_0%,rgba(214,238,255,0.94)_26%,rgba(214,238,255,0.78)_48%,rgba(214,238,255,0.38)_72%,rgba(214,238,255,0)_100%)]" />
-        <div className="relative z-10 mx-auto flex min-h-[30rem] max-w-6xl items-center px-10 py-20 md:min-h-[36rem] md:px-14 md:py-24 lg:px-20">
-          <div className="max-w-lg">
-            <div>
-              <h1 className="text-4xl md:text-5xl font-bold mb-4">
-                Hi, I&apos;m Ryan!
-              </h1>
-              <p className="mb-8 max-w-lg text-lg text-black">
-                An Experienced Professional with a varied background in Tech,
-                Esports, Events, and Media.
-              </p>
-              <div className="flex flex-wrap gap-3">
-                {socialLinks.map((link) => (
-                  <SocialLink
-                    key={link.label}
-                    label={link.label}
-                    href={link.href}
-                  />
-                ))}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(96,205,193,0.28),transparent_42%),linear-gradient(180deg,rgba(255,255,255,0.45),rgba(255,255,255,0))]" />
+        <div className="relative z-10 mx-auto grid min-h-[34rem] max-w-6xl gap-10 px-6 py-16 md:px-10 md:py-20 lg:grid-cols-[minmax(0,1fr)_24rem] lg:items-center lg:px-16">
+          <div className="max-w-2xl">
+            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.22em] text-secondary">
+              Tech, Events, Esports, Media
+            </p>
+            <h1 className="mb-5 max-w-xl font-display text-5xl md:text-6xl">
+              Hi, I&apos;m Ryan!
+            </h1>
+            <p className="mb-8 max-w-xl text-lg leading-8 text-dark">
+              An experienced professional with a varied background in tech,
+              esports, events, and media.
+            </p>
+            <div className="flex flex-wrap gap-4">
+              {socialLinks.map((link) => (
+                <SocialLink
+                  key={link.label}
+                  label={link.label}
+                  href={link.href}
+                  iconSrc={link.iconSrc}
+                />
+              ))}
+            </div>
+          </div>
+
+          <div className="justify-self-start lg:justify-self-end">
+            <div className="relative overflow-hidden rounded-[2rem] border border-primary/20 bg-white p-3 shadow-[0_24px_60px_rgba(90,90,90,0.16)]">
+              <div className="relative aspect-[4/5] w-full max-w-sm overflow-hidden rounded-[1.4rem] bg-accent/10 lg:w-[24rem]">
+                <Image
+                  src="/headshot-4-26.jpg"
+                  alt="Ryan Winter headshot"
+                  fill
+                  priority
+                  sizes="(max-width: 1024px) 80vw, 24rem"
+                  className="object-cover"
+                />
               </div>
             </div>
           </div>
@@ -41,10 +67,10 @@ export default function Home() {
       </section>
 
       {/* About Me Section */}
-      <section className="relative z-20 -mt-20 pb-16">
+      <section className="relative z-20 -mt-8 pb-16 md:-mt-12">
         <div className="max-w-6xl mx-auto px-6">
-          <div className="rounded-2xl bg-white shadow-sm p-6 md:p-10">
-            <h2 className="text-2xl font-bold mb-4">About Me</h2>
+          <div className="rounded-[2rem] bg-white p-6 shadow-sm md:p-10">
+            <h2 className="mb-4 font-display text-3xl">About Me</h2>
             <p className="text-neutral1 leading-relaxed">
               I've had an extremely diverse background of experiences throughout my life that has 
               turned me into an ultimate jack of all trades. From dressing up as the Christmas Teddy Bear, to DJing Bar Mitzvahs,
